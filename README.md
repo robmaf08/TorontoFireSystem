@@ -6,7 +6,7 @@
 
 <div>
 
-Progetto per il corso di Ingegneria della conoscenzza (ICON) per l' anno accademico 2021-2022.
+Progetto per il corso di Ingegneria della conoscenza (ICON) per l' anno accademico 2021-2022.
 
 ### Requisiti
 Per l'esecuzione del sistema, è necessario aver installato: 
