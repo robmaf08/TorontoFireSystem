@@ -9,6 +9,4 @@ geopy
 osmnx
 networkx
 prettytable
-PyQt5
 pgmpy
-pickle
