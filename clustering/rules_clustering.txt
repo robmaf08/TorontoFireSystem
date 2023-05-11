@@ -1,0 +1,98 @@
+% Definizione regole clustering
+rischio_incendio(Quartiere, Stagione, Rischio) :-
+    neighbourhood(Quartiere, 'Cluster', Cluster),
+    rischio_cluster(Cluster, Stagione, Rischio).
+
+quartiere_ad_alto_rischio(Quartiere) :- 
+    neighbourhood(Quartiere, 'Cluster', Cluster),
+    ( Cluster = 2; Cluster = 3; Cluster = 6).
+
+quartiere_a_medio_rischio(Quartiere) :- 
+    neighbourhood(Quartiere, 'Cluster', Cluster),
+    ( Cluster = 1; Cluster = 7).
+
+quartiere_a_basso_rischio(Quartiere) :- 
+    neighbourhood(Quartiere, 'Cluster', Cluster),
+    ( Cluster = 0; Cluster = 5; Cluster = 4).
+    
+% Elenca tutti i quartieri con un livello di rischio in una stagione data
+quartieri_con_rischio(Stagione, Rischio, Quartieri) :-
+    findall(Quartiere, rischio_incendio(Quartiere, Stagione, Rischio), Quartieri).
+
+maggiori_incidenti_cluster('Spring', 3).
+maggiori_incidenti_cluster('Summer', 3).
+maggiori_incidenti_cluster('Autumn', 3).
+maggiori_incidenti_cluster('Winter', 3).
+
+tasso_incendi_quartiere(Quartiere, Stagione, Tasso) :-
+    neighbourhood(Quartiere, Stagione, NumIncidenti),
+    neighbourhood(Quartiere, 'Abitants', NumAbitanti),
+    Tasso is (NumIncidenti / NumAbitanti) * 1000.
+
+% Converte il livello di rischio in un valore numerico
+rischio_numerico('Molto Basso', 1).
+rischio_numerico('Basso', 2).
+rischio_numerico('Medio', 3).
+rischio_numerico('Alto', 4).
+rischio_numerico('Molto Alto', 5).
+
+% Calcola il numero totale di incendi in un quartiere
+num_incendi_totali(Quartiere, NumIncendiTotali) :-
+    neighbourhood(Quartiere, 'Spring', IncSpring),
+    neighbourhood(Quartiere, 'Summer', IncSummer),
+    neighbourhood(Quartiere, 'Autumn', IncAutumn),
+    neighbourhood(Quartiere, 'Winter', IncWinter),
+    NumIncendiTotali is IncSpring + IncSummer + IncAutumn + IncWinter.
+
+quartiere_piu_incidenti(Quartiere, MaxIncidenti) :-
+    findall(Q, (neighbourhood(Q, 'Cluster', C), rischio_cluster(C, _, 'Molto Alto')), QuartieriMoltoAlto),
+    find_max_incidents(QuartieriMoltoAlto, ('', 0), (Quartiere, MaxIncidenti)).
+
+find_max_incidents([], MaxSoFar, MaxSoFar).
+find_max_incidents([Q|Rest], (MaxQ, MaxInc), Result) :-
+    findall(IdIncidente, incidente(IdIncidente, 'Neighbourhood', Q), Incidenti),
+    length(Incidenti, TotInc),
+    (TotInc > MaxInc ->
+        find_max_incidents(Rest, (Q, TotInc), Result);
+        find_max_incidents(Rest, (MaxQ, MaxInc), Result)
+    ).
+
+quartiere_piu_alto_tasso_incendi(Rischio, Stagione, Quartiere, MaxTasso) :-
+    quartieri_con_rischio(Stagione, Rischio, Quartieri),
+    find_max_tasso_incendi(Quartieri, Stagione, ('', 0), (Quartiere, MaxTasso)).
+
+find_max_tasso_incendi([], _, MaxSoFar, MaxSoFar).
+find_max_tasso_incendi([Q|Rest], Stagione, (MaxQ, MaxTasso), Result) :-
+    tasso_incendi_quartiere(Q, Stagione, Tasso),
+    (Tasso > MaxTasso ->
+        find_max_tasso_incendi(Rest, Stagione, (Q, Tasso), Result);
+        find_max_tasso_incendi(Rest, Stagione, (MaxQ, MaxTasso), Result)
+    ).
+
+% Calcola la differenza di tasso d incidenti tra due stagioni in un quartiere
+diff_tasso_incendi_quartiere(Quartiere, Stagione1, Stagione2, Diff) :-
+    tasso_incendi_quartiere(Quartiere, Stagione1, Tasso1),
+    tasso_incendi_quartiere(Quartiere, Stagione2, Tasso2),
+    Diff is abs(Tasso1 - Tasso2).
+
+
+quartiere_piu_basso_tasso_incendi(Rischio, Stagione, Quartiere, MinTasso) :-
+    quartieri_con_rischio(Stagione, Rischio, Quartieri),
+    find_min_tasso_incendi(Quartieri, Stagione, ('', inf), (Quartiere, MinTasso)).
+
+find_min_tasso_incendi([], _, MinSoFar, MinSoFar).
+find_min_tasso_incendi([Q|Rest], Stagione, (MinQ, MinTasso), Result) :-
+    tasso_incendi_quartiere(Q, Stagione, Tasso),
+    (Tasso < MinTasso ->
+        find_min_tasso_incendi(Rest, Stagione, (Q, Tasso), Result);
+        find_min_tasso_incendi(Rest, Stagione, (MinQ, MinTasso), Result)
+    ).
+
+% Calcola il miglioramento percentuale tra due stagioni per un singolo quartiere (solo valori positivi o zero)
+miglioramento_quartiere(Quartiere, Stagione1, Stagione2, PercentualeMiglioramento) :-
+    neighbourhood(Quartiere, Stagione1, NumIncidenti1),
+    neighbourhood(Quartiere, Stagione2, NumIncidenti2),
+    (NumIncidenti1 > 0, NumIncidenti2 >= 0 ->
+        TempMiglioramento is (NumIncidenti1 - NumIncidenti2) / NumIncidenti1 * 100,
+        PercentualeMiglioramento is max(0, TempMiglioramento);
+        PercentualeMiglioramento = 0).

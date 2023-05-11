@@ -1,0 +1,577 @@
+:- dynamic(stazione/3).
+:- dynamic(incidente/3).
+
+% Definizione Regole
+numero_soccorsi_stazione(Stazione, NumeroIncidenti) :-
+    findall(Incidente, incidente(Incidente, 'Incident_Station_Area', Stazione), Incidenti),
+    length(Incidenti, NumeroIncidenti).
+
+
+% Regola per determinare stazioni vicine. Due stazioni sono vicine se a meno di 10km o se appartengono allo stesso quartiere
+stazioni_vicine(Stazione, ListaStazioni) :-
+	stazione(Stazione, 'Neighbourhood', Quartiere),
+	findall(Staz, 
+	(stazione(Staz, 'Neighbourhood', Quartiere), Staz \= Stazione), 
+	StazioniQuartiere),
+	stazione(Stazione, 'Latitude', LatStat),
+	stazione(Stazione, 'Longitude', LonStat),
+	findall(Staz, 
+	(stazione(Staz, 'Latitude', LatStaz),
+	stazione(Staz, 'Longitude', LonStaz),
+	distanza_haversine(LatStat, LonStat, LatStaz, LonStaz, Distanza),
+	Staz \= Stazione, 
+	Distanza =< 5
+	), StazioniVicine),
+	append(StazioniQuartiere, StazioniVicine, ListaStazioni).
+
+stazioni_vicine_luogo(Latitudine, Longitudine, ListaStazioni) :-
+	findall(Staz,
+	(stazione(Staz, 'Latitude', LatStaz),
+	stazione(Staz, 'Longitude', LonStaz),
+	distanza_haversine(Latitudine, Longitudine, LatStaz, LonStaz, Distanza),
+	Distanza =< 5
+	),
+	ListaStazioni).
+
+% Definizione della regola per calcolare la durata di un incidente
+durata_incidente(Incidente, Durata) :-
+    incidente(Incidente, 'TFS_Alarm_Time', TFS_Alarm),
+    incidente(Incidente, 'Fire_Under_Control_Time', Fire_Under_Control),
+    parse_time(TFS_Alarm, TFS_Alarm_Timestamp),
+    parse_time(Fire_Under_Control, Fire_Under_Control_Timestamp),
+    DurataSecondi is Fire_Under_Control_Timestamp - TFS_Alarm_Timestamp,
+    % Restituiamo la durata in minuti
+    DurataMinuti is DurataSecondi / 60,
+    Durata is round(DurataMinuti).
+
+% Calcola il tempo di risposta per un incidente
+tempo_risposta(Incidente, TempoRisposta) :-
+    % Ottieniamo il tempo in cui è scattato l'allarme
+    incidente(Incidente, 'TFS_Alarm_Time', AlarmTime),
+    % Ottieniamo il tempo di arrivo dei vigili del fuoco
+    incidente(Incidente, 'TFS_Arrival_Time', ArrivalTime),
+    % Converte le stringhe in date e calcola la differenza in minuti
+    parse_time(AlarmTime, AlarmTimestamp),
+    parse_time(ArrivalTime, ArrivalTimestamp),
+    TempoDiff is ArrivalTimestamp - AlarmTimestamp,
+    TempoMinuti is TempoDiff / 60,
+    TempoRisposta is TempoMinuti.
+
+            
+% Calcola il tempo di risposta medio per una stazione
+tempo_risposta_medio(Stazione, TempoRispostaMedio) :-
+    % Ottieniamo tutti gli incidenti soccorsi dalla stazione
+    findall(Incidente, incidente(Incidente, 'Incident_Station_Area', Stazione), Incidenti),
+    % Si calcola il tempo di risposta per ogni incidente
+    maplist(tempo_risposta, Incidenti, TempiRisposta),
+    % Calcola il tempo di risposta medio
+    length(TempiRisposta, NumeroIncidenti),
+    sum_list(TempiRisposta, SommaTempiRisposta),
+    TempoRispostaMedio is SommaTempiRisposta / NumeroIncidenti.
+
+            
+% Calcola il tempo di messa in sicurezza per un incidente
+tempo_messa_in_sicurezza(Incidente, TempoMessaInSicurezza) :-
+    % Ottieni la data e ora di arrivo dei vigili del fuoco sul luogo dell'incidente
+    incidente(Incidente, 'TFS_Arrival_Time', ArrivalTime),
+    % Ottieni la data e ora di messa in sicurezza dell'incendio
+    incidente(Incidente, 'Fire_Under_Control_Time', ControlTime),
+    % Converte le stringhe in date e calcola la differenza in minuti
+    parse_time(ArrivalTime, ArrivalTimestamp),
+    parse_time(ControlTime, ControlTimestamp),
+    TempoDiff is ControlTimestamp - ArrivalTimestamp,
+    TempoMinuti is TempoDiff / 60,
+    TempoMessaInSicurezza is round(TempoMinuti).
+
+convert_time(ISOString, TimeStamp) :-
+    atom_concat(Date, TimeTemp, ISOString),
+    atom_concat('T', Time, TimeTemp),
+    atomic_list_concat(DateList, '-', Date),
+    atomic_list_concat(TimeList, ':', Time),
+    maplist(atom_number, DateList, [Year, Month, Day]),
+    maplist(atom_number, TimeList, [Hour, Minute, Second]),
+    TimeStamp = (((((Year * 10000) + Month * 100) + Day) * 1000000) + ((Hour * 10000) + (Minute * 100) + Second)).
+
+attivita_stazione(Stazione, Inizio, Fine, Livello) :-
+    % Converte le stringhe di data e ora in un formato numerico
+    convert_time(Inizio, InizioTimestamp),
+    convert_time(Fine, FineTimestamp),
+
+    % Ottieni tutti gli incidenti a cui la stazione ha risposto nell'intervallo di tempo specificato
+    findall(Incidente, (incidente(Incidente, 'Incident_Station_Area', Stazione),
+                        incidente(Incidente, 'TFS_Alarm_Time', AlarmTime),
+                        convert_time(AlarmTime, IncidentTimestamp),
+                        IncidentTimestamp >= InizioTimestamp,
+                        IncidentTimestamp =< FineTimestamp), Incidenti),
+
+    % Conta il numero di incidenti
+    length(Incidenti, NumeroIncidenti),
+
+    % Definisci il livello di attività in base al numero di incidenti
+    (NumeroIncidenti >= 10 -> Livello = alto;
+     NumeroIncidenti >= 5 -> Livello = medio;
+     Livello = basso).
+   
+% Definizione del valore massimo di danno economico
+valore_massimo_danno_economico(10000000).
+
+% Regola per classificare gli incendi in base al danno economico stimato
+danno_economico(Incidente, Classificazione) :-
+    % Ottieni il valore stimato del danno economico
+    incidente(Incidente, 'Estimated_Dollar_Loss', Valore),
+    (
+        % Valore stimato del danno economico inferiore a $50,000
+        Valore < 50000 -> Classificazione = 'basso';
+        % Valore stimato del danno economico compreso tra $50,000 e $100,000
+        Valore >= 50000, Valore < 100000 -> Classificazione = 'medio';
+        % Valore stimato del danno economico superiore a $100,000
+        Valore >= 100000 -> Classificazione = 'alto'
+    ).
+                
+
+velocita_stazione(Incidente, Velocita) :-
+    % Ottieni la posizione della stazione
+    incidente(Incidente, 'Incident_Station_Area', Stazione),
+    incidente(Stazione, 'Latitude', LatStazione),
+    incidente(Stazione, 'Longitude', LonStazione),
+    % Ottieni la posizione dell'incidente
+    incidente(Incidente, 'Latitude', LatIncidente),
+    incidente(Incidente, 'Longitude', LonIncidente),
+    % Calcola la distanza tra la stazione e l'incidente
+    distanza_haversine(LatStazione, LonStazione, LatIncidente, LonIncidente, Distanza),
+    % Calcola il tempo di risposta effettivo della stazione
+    tempo_risposta(Incidente, TempoRisposta),
+    % Calcola la velocità come la distanza diviso il tempo di risposta (in minuti)
+    Velocita is Distanza / TempoRisposta.
+   
+gravita_incidente(Incidente, Gravita) :-
+    % Calcola la durata dell evento
+    incidente(Incidente, 'TFS_Alarm_Time', AlarmTime),
+    incidente(Incidente, 'Last_TFS_Unit_Clear_Time', ClearTime),
+    parse_time(AlarmTime, AlarmTimestamp),
+    parse_time(ClearTime, ClearTimestamp),
+    Durata is (ClearTimestamp - AlarmTimestamp) / 60, % in minuti
+    
+    % Valuta l Extent_Of_Fire
+    incidente(Incidente, 'Extent_Of_Fire', ExtentOfFire),
+    (
+        (ExtentOfFire = 'Confined to part of room/area of origin', PesoExtentOfFire = 2);
+        (ExtentOfFire = 'Spread to entire room of origin', PesoExtentOfFire = 3);
+        (ExtentOfFire = 'Spread beyond room of origin, same floor', PesoExtentOfFire = 4);
+        (ExtentOfFire = 'Confined to roof/exterior structure', PesoExtentOfFire = 5);
+        (ExtentOfFire = 'Spread to other floors, confined to building', PesoExtentOfFire = 6);
+        (ExtentOfFire = 'Spread beyond building of origin, resulted in exposure fire(s)', PesoExtentOfFire = 7);
+        (ExtentOfFire = 'Entire Structure', PesoExtentOfFire = 8);
+        (ExtentOfFire = 'Spread beyond building of origin', PesoExtentOfFire = 7);
+        (ExtentOfFire = 'Multi unit bldg: spread beyond suite of origin but not to separated suite(s)', PesoExtentOfFire = 5);
+        (ExtentOfFire = 'Multi unit bldg: spread to separate suite(s)', PesoExtentOfFire = 6);
+        PesoExtentOfFire = 1 % Valore di default nel caso in cui l Extent_Of_Fire non sia specificato o sia sconosciuto
+    ),
+
+    % Valuta il Status_of_Fire_On_Arrival
+    incidente(Incidente, 'Status_of_Fire_On_Arrival', StatusOfFire),
+    (
+        (StatusOfFire = 'Fire extinguished prior to arrival', PesoStatusOfFire = 1);
+        (StatusOfFire = 'Fire with no evidence from street', PesoStatusOfFire = 2);
+        (StatusOfFire = 'Fire with smoke showing only - including vehicle, outdoor fires', PesoStatusOfFire = 3);
+        (StatusOfFire = 'Flames showing from small area (one storey or less, part of a vehicle, outdoor)', PesoStatusOfFire = 4);
+        (StatusOfFire = 'Flames showing from large area (more than one storey, large area outdoors)', PesoStatusOfFire = 5);
+        (StatusOfFire = 'Fully involved (total structure, vehicle, spreading outdoor fire)', PesoStatusOfFire = 6);
+        (StatusOfFire = 'Unclassified', PesoStatusOfFire = 1);
+        (StatusOfFire = 'Exposure involved', PesoStatusOfFire = 7);
+        PesoStatusOfFire = 1 % Valore di default nel caso in cui il Status_of_Fire_On_A
+    ),
+
+    % Valuta il Business_Impact
+    incidente(Incidente, 'Business_Impact', BusinessImpact),
+    (
+	(BusinessImpact = 'Not applicable (not a business)', PesoBusinessImpact = 0);
+  	(BusinessImpact = 'May resume operations within a week', PesoBusinessImpact = 2);
+	(BusinessImpact = 'May resume operations within a month', PesoBusinessImpact = 3);
+	(BusinessImpact = 'May not resume operations', PesoBusinessImpact = 7);
+	(BusinessImpact = 'May resume operations within a year', PesoBusinessImpact = 5);
+	PesoBusinessImpact = 1 % Valore di default nel caso in cui il Business_Impact non sia specificato o sia sconosciuto
+    ),
+	
+    % Valuta il Fire_Alarm_System_Presence
+    incidente(Incidente, 'Fire_Alarm_System_Presence', FireAlarmSystem),
+    (
+        (FireAlarmSystem = 'Fire alarm system present', PesoFireAlarmSystem = 1);
+        (FireAlarmSystem = 'Not applicable (bldg not classified by OBC OR detached/semi/town home)', 
+        PesoFireAlarmSystem = 1);
+        % Aggiungi altre opzioni qui
+        PesoFireAlarmSystem = 1 % Valore di default nel caso in cui il Fire_Alarm_System_Presence non sia specificato o sia sconosciuto
+    ),
+
+   % Calcola il punteggio di gravità
+   Punteggio = Durata * 0.4 + PesoExtentOfFire * 0.3 + PesoBusinessImpact * 0.2 + PesoStatusOfFire * 0.3 + PesoFireAlarmSystem * 0.1,
+
+   % Classifica la gravità in base al punteggio 
+   (
+       Punteggio >= 8 -> Gravita = alta;
+       Punteggio >= 4 -> Gravita = media;
+       Gravita = bassa
+   ).
+   
+% Calcola il punteggio di contenimento dell incendio per un incidente
+contenimento_incendio(Incidente, PunteggioContenimento) :-
+    incidente(Incidente, 'Fire_Under_Control_Time', ControlTime),
+    incidente(Incidente, 'TFS_Arrival_Time', ArrivalTime),
+    parse_time(ControlTime, ControlTimestamp),
+    parse_time(ArrivalTime, ArrivalTimestamp),
+    DiffTime is ControlTimestamp - ArrivalTimestamp,
+    incidente(Incidente, 'Extent_Of_Fire', ExtentOfFire),
+    (
+        (ExtentOfFire = 'Confined to object of origin'; ExtentOfFire = 'Confined to part of room/area of origin') -> BasePunteggio = 1;
+        (ExtentOfFire = 'Spread to entire room of origin'; ExtentOfFire = 'Spread to other rooms/floors') -> BasePunteggio = 0.5;
+        (ExtentOfFire = 'Beyond building/structure of origin'; ExtentOfFire = 'Beyond property of origin') -> BasePunteggio = 0;
+        % Valore di default per "Undetermined" o altri valori non specificati
+        BasePunteggio = 0
+    ),
+    (DiffTime < 0 -> PunteggioContenimento = 0;
+     DiffTime >= 0, DiffTime < 1800 -> PunteggioContenimento = BasePunteggio * 1;
+     DiffTime >= 1800, DiffTime < 3600 -> PunteggioContenimento = BasePunteggio * 0.5;
+     PunteggioContenimento = BasePunteggio * 0.25).
+
+% Assegna un valore numerico alla gravità
+valore_numerico_gravita(Gravita, Valore) :-
+    (
+        Gravita = 'alta' -> Valore = 3;
+        Gravita = 'media' -> Valore = 2;
+        Gravita = 'bassa' -> Valore = 1
+    ).
+
+% Normalizza un valore tra un minimo e un massimo
+normalizza(Valore, Min, Max, Normalizzato) :-
+    Normalizzato is (Valore - Min) / (Max - Min).
+
+% Convertire un float in una stringa
+float_to_string(Float, Stringa) :-
+    number_codes(Float, Codes),
+    string_codes(String, Codes),
+    format(atom(Stringa), '~w', [String]).
+
+% Convertire una stringa in un float
+string_to_float(String, Float) :-
+    string_codes(String, Codes),
+    number_codes(Float, Codes).
+
+% Calcola il punteggio di efficienza per una stazione
+efficienza_stazione(Stazione, Efficienza) :-
+    % Ottieni tutti gli incidenti a cui la stazione ha risposto
+    findall(Incidente, incidente(Incidente, 'Incident_Station_Area', Stazione), Incidenti),
+
+    % Calcola il tempo di risposta per ogni incidente
+    maplist(velocita_stazione, Incidenti, TempiRisposta),
+
+    % Calcola il tempo di messa in sicurezza per ogni incidente
+    maplist(tempo_messa_in_sicurezza, Incidenti, TempiMessaInSicurezza),
+
+    % Calcola il successo nel contenimento dell'incendio per ogni incidente
+    maplist(contenimento_incendio, Incidenti, SuccessiContenimento),
+
+    % Calcola i punteggi medi per i tre fattori
+    length(Incidenti, NumeroIncidenti),
+    sum_list(TempiRisposta, SommaTempiRisposta),
+    sum_list(TempiMessaInSicurezza, SommaTempiMessaInSicurezza),
+    sum_list(SuccessiContenimento, SommaContenimento),
+    MediaTempoRisposta is SommaTempiRisposta / NumeroIncidenti,
+    MediaTempoMessaInSicurezza is SommaTempiMessaInSicurezza / NumeroIncidenti,
+    MediaContenimento is SommaContenimento / NumeroIncidenti,
+    % Trova i valori minimo e massimo per i tre fattori
+    min_list(TempiRisposta, MinTempoRisposta),
+    max_list(TempiRisposta, MaxTempoRisposta),
+    min_list(TempiMessaInSicurezza, MinTempoMessaInSicurezza),
+    max_list(TempiMessaInSicurezza, MaxTempoMessaInSicurezza),
+    min_list(SuccessiContenimento, MinContenimento),
+    max_list(SuccessiContenimento, MaxContenimento),
+    % Assegna pesi ai diversi fattori
+    PesoTempoRisposta = 0.4,
+    PesoTempoMessaInSicurezza = 0.3,
+    PesoContenimento = 0.3,
+
+    % Normalizza i valori medi e inverti il loro ordine (valori più bassi diventano più alti)
+    NormTempoRisposta is 1 - (MediaTempoRisposta - MinTempoRisposta) / (MaxTempoRisposta - MinTempoRisposta),
+    NormTempoMessaInSicurezza is 1 - (MediaTempoMessaInSicurezza - MinTempoMessaInSicurezza) / (MaxTempoMessaInSicurezza - MinTempoMessaInSicurezza),
+    (
+        MaxContenimento =:= MinContenimento ->
+        NormContenimento is 1
+        ;
+        NormContenimento is 1 - (MediaContenimento - MinContenimento) / (MaxContenimento - MinContenimento)
+    ),
+	% Calcola l'efficienza come il punteggio medio ponderato dei diversi fattori normalizzati
+	EfficienzaPreliminare is (PesoTempoRisposta * NormTempoRisposta) +
+			  (PesoTempoMessaInSicurezza * NormTempoMessaInSicurezza) +
+			  (PesoContenimento * NormContenimento),
+
+	% Utilizza il logaritmo naturale del numero di incidenti gestiti per bilanciare l'efficienza
+	LogNumeroIncidenti is log(NumeroIncidenti),
+	EfficienzaNum is EfficienzaPreliminare * LogNumeroIncidenti,
+
+	% Normalizza l'efficienza tra 0 e 1
+	EfficienzaNorm is EfficienzaNum / (1 * 1),
+
+	% Formatta l'efficienza come una stringa
+	format(atom(Efficienza), '~w', [EfficienzaNorm]),
+	!.
+           
+assegna_stazione(Latitudine, Longitudine, PossibleCause, PropertyUse, StazioneAssegnata) :-
+    % Trova tutte le stazioni uniche
+    setof(Staz, stazione(Staz, _, _), Stazioni),
+
+    % Calcola l'efficienza, la distanza e l'esperienza per ogni stazione
+    findall(
+        (Staz, Efficienza, Distanza, Esperienza),
+        (
+            member(Staz, Stazioni),
+            stazione(Staz, 'Disponibilita', 1),
+            efficienza_stazione(Staz, EfficienzaS),
+            string_to_float(EfficienzaS, Efficienza),
+            stazione(Staz, 'Latitude', LatStaz),
+            stazione(Staz, 'Longitude', LonStaz),
+            distanza_haversine(Latitudine, Longitudine, LatStaz, LonStaz, Distanza),
+            esperienza_tipo_incendio(Staz, PropertyUse, PossibleCause, Esperienza)
+        ),
+        PunteggiStazioni
+    ),
+
+    % Trova i valori massimi e minimi per la distanza, l'efficienza e l'esperienza
+    findall(Distanza, member((_, _, Distanza, _), PunteggiStazioni), ListeDistanze),
+    max_list(ListeDistanze, DistanzaMassima),
+    min_list(ListeDistanze, DistanzaMinima),
+    findall(Efficienza, member((_, Efficienza, _, _), PunteggiStazioni), ListeEfficienze),
+    max_list(ListeEfficienze, EfficienzaMassima),
+    min_list(ListeEfficienze, EfficienzaMinima),
+    findall(Esperienza, member((_, _, _, Esperienza), PunteggiStazioni), ListeEsperienze),
+    max_list(ListeEsperienze, EsperienzaMassima),
+    min_list(ListeEsperienze, EsperienzaMinima),
+    format('Espmin: ~2f, EspMax: ~2f~n', [EsperienzaMinima, EsperienzaMassima]),
+    % Normalizza i punteggi per la distanza, l'efficienza e l'esperienza tra 0 e 1
+    findall(
+        (Staz, PunteggioDistanza, PunteggioEfficienza, PunteggioEsperienza),
+        (
+            member((Staz, Efficienza, Distanza, Esperienza), PunteggiStazioni),
+            PunteggioDistanza is 1 - (Distanza - DistanzaMinima) / (DistanzaMassima - DistanzaMinima),
+            PunteggioEfficienza is (Efficienza - EfficienzaMinima) / (EfficienzaMassima - EfficienzaMinima),
+            PunteggioEsperienza is (Esperienza - EsperienzaMinima) / (EsperienzaMassima - EsperienzaMinima),
+
+            format('Staz: ~w, PunteggioDistanza: ~2f, PunteggioEfficienza: ~2f, PunteggioEsperienza: ~2f~n', [Staz, PunteggioDistanza, PunteggioEfficienza, PunteggioEsperienza])
+
+        ),
+        PunteggiNormalizzati
+    ),
+
+    % Assegna i pesi e calcola il punteggio combinato
+    findall(
+        (Staz, PunteggioCombinato),
+        (
+            member((Staz, PunteggioDistanza, PunteggioEfficienza, PunteggioEsperienza), PunteggiNormalizzati),
+            PesoDistanza is 0.6,
+            PesoEfficienza is 0.3,
+            PesoEsperienza is 0.1,
+            PunteggioCombinato is (PunteggioDistanza * PesoDistanza) + (PunteggioEfficienza * PesoEfficienza) + (PunteggioEsperienza * PesoEsperienza)
+        ),
+        PunteggiCombinati
+    ),
+
+    % Scegli la stazione con il punteggio combinato migliore
+    sort(2, @>=, PunteggiCombinati, PunteggiCombinatiOrdinati),
+
+    % Stampa le stazioni con i rispettivi punteggi combinati
+    writeln('Stazioni e punteggi combinati:'),
+    forall(
+        member((Staz, Punteggio), PunteggiCombinatiOrdinati),
+        format('Stazione: ~w, Punteggio: ~2f~n', [Staz, Punteggio])
+    ),
+
+    % Assegna la stazione con il punteggio combinato migliore
+    PunteggiCombinatiOrdinati = [(StazioneAssegnata, _)|_],
+    !.
+
+esperienza_tipo_incendio(Stazione, PropertyUse, PossibleCause, EsperienzaNormalizzata) :-
+    findall(IncidenteStazione, (
+        incidente(IncidenteStazione, 'Incident_Station_Area', Stazione),
+        incidente(IncidenteStazione, 'Property_Use', PropertyUse),
+        incidente(IncidenteStazione, 'Possible_Cause', PossibleCause)
+    ), IncidentiStazioneTipo),
+    length(IncidentiStazioneTipo, NumeroIncidentiTipo),
+    findall(IncidenteTotale, (
+        incidente(IncidenteTotale, 'Property_Use', PropertyUse),
+        incidente(IncidenteTotale, 'Possible_Cause', PossibleCause)
+    ), IncidentiTotaliTipo),
+    length(IncidentiTotaliTipo, NumeroIncidentiTotaliTipo),
+    
+    % Evita la divisione per zero
+    (
+        NumeroIncidentiTotaliTipo =:= 0 ->
+        EsperienzaNormalizzata = 0;
+        EsperienzaNormalizzata is (NumeroIncidentiTipo / NumeroIncidentiTotaliTipo)
+    ).
+
+% Converte gradi in radianti
+gradi_a_radianti(Degrees, Radians) :-
+    Radians is Degrees * pi / 180.
+
+% Calcola la distanza tra due punti sulla Terra utilizzando la formula di Haversine
+distanza_haversine(Lat1, Lon1, Lat2, Lon2, Distanza) :-
+    gradi_a_radianti(Lat1, RLat1),
+    gradi_a_radianti(Lon1, RLon1),
+    gradi_a_radianti(Lat2, RLat2),
+    gradi_a_radianti(Lon2, RLon2),
+    DLat is RLat2 - RLat1,
+    DLon is RLon2 - RLon1,
+    A is sin(DLat / 2) ** 2 + cos(RLat1) * cos(RLat2) * sin(DLon / 2) ** 2,
+    C is 2 * atan2(sqrt(A), sqrt(1 - A)),
+    RaggioTerrestre is 6371, % Raggio terrestre medio in km
+    Distanza is RaggioTerrestre * C.
+    
+% Calcola la distanza tra un incidente e una stazione utilizzando la formula di Haversine
+distanza_incidente_stazione(LatInc, LonInc, Stazione, Distanza) :-
+    stazione(Stazione, 'Latitude', LatitudineStazione),
+    stazione(Stazione, 'Longitude', LongitudineStazione),
+    distanza_haversine(LatInc, LonInc, LatitudineStazione, LongitudineStazione, Distanza).
+     
+% Ragionamento con vincoli
+allarme_funzionante(Incidente) :-
+    incidente(Incidente, 'Fire_Alarm_System_Presence', 'Fire alarm system present'), 
+    incidente(Incidente, 'Fire_Alarm_System_Operation', 'Fire alarm system operated').
+
+evacuazione_effettiva(Incidente) :-
+    incidente(Incidente, 'Fire_Alarm_System_Impact_on_Evacuation', 'All persons (at risk of injury) evacuated as a result of hearing fire alarm system').
+
+sistema_allarme_presente(Incidente) :-
+    incidente(Incidente, 'Fire_Alarm_System_Presence', 'Fire alarm system present').
+
+efficacia_allarme(Incidente, Efficacia) :-
+    incidente(Incidente, 'Fire_Alarm_System_Operation', Operazione),
+    incidente(Incidente, 'Fire_Alarm_System_Impact_on_Evacuation', ImpattoEvacuazione),
+    incidente(Incidente, 'Fire_Alarm_System_Presence', Presenza),
+    (
+        % Il sistema di allarme è presente, ha funzionato e ha contribuito all'evacuazione
+        Operazione = 'Fire alarm system operated',
+        ImpattoEvacuazione = 'All persons (at risk of injury) evacuated as a result of hearing fire alarm system',
+        Presenza = 'Fire alarm system present' -> Efficacia = 'alta';
+        
+        % Il sistema di allarme è presente, ha funzionato, ma ha contribuito solo parzialmente all'evacuazione
+        Operazione = 'Fire alarm system operated',
+        ImpattoEvacuazione = 'Some persons (at risk) evacuated as a result of hearing fire alarm system',
+        Presenza = 'Fire alarm system present' -> Efficacia = 'media';
+        
+        % Il sistema di allarme è presente, ma non ha funzionato o non ha contribuito all'evacuazione
+        (Operazione \= 'Fire alarm system operated' ; ImpattoEvacuazione \= 'All persons (at risk of injury) evacuated as a result of hearing fire alarm system'),
+        Presenza = 'Fire alarm system present' -> Efficacia = 'bassa';
+        
+        % Il sistema di allarme non è presente o non si conosce il suo stato
+        Presenza \= 'Fire alarm system present' -> Efficacia = 'non_disponibile'
+    ).
+
+% Regola per determinare l'intervento migliorativo da effettuare nel quartiere
+intervento_migliorativo_quartiere(Quartiere, Anno, Intervento) :-
+    % Ottieni tutti gli incidenti nel quartiere specificato
+    findall(Incidente, (
+    	incidente(Incidente, 'Neighbourhood', Quartiere),
+    	incidente(Incidente, 'TFS_Alarm_Time', Time), 
+    	parse_time(Time, Stamp), 
+	stamp_date_time(Stamp, DateTime, local), 
+ 	date_time_value(year, DateTime, Anno)), 
+	Incidenti),
+
+    % Calcola la gravità media degli incidenti nel quartiere
+    maplist(gravita_incidente_numerica, Incidenti, GravitaIncidenti),
+    sum_list(GravitaIncidenti, SommaGravita),
+    length(Incidenti, NumeroIncidenti),
+    GravitaMedia is SommaGravita / NumeroIncidenti,
+    
+    % Calcola l'efficacia media del sistema di allarme antincendio nel quartiere
+    maplist(efficacia_allarme_numerica, Incidenti, EfficaciaAllarmi),
+    sum_list(EfficaciaAllarmi, SommaEfficacia),
+    EfficaciaMedia is SommaEfficacia / NumeroIncidenti,
+    % Suggerisci un intervento migliorativo in base alla gravità media e all'efficacia media del sistema di allarme
+    (
+        GravitaMedia >= 6,
+        EfficaciaMedia < 4 -> Intervento = 'installare_o_migliorare_sistema_allarme';
+        
+        GravitaMedia < 6,
+        EfficaciaMedia < 4 -> Intervento = 'valutare_installazione_sistema_allarme';
+        
+        GravitaMedia >= 4,
+        EfficaciaMedia >= 4 -> Intervento = 'verificare_e_migliorare_sistema_allarme';
+        
+        GravitaMedia < 4,
+        EfficaciaMedia >= 4 -> Intervento = 'manutenzione_periodica_sistema_allarme';
+        
+        Intervento = 'nessun_intervento_necessario'
+    ).
+
+gravita_incidente_numerica(Incidente, GravitaNumerica) :-
+    gravita_incidente(Incidente, Gravita),
+    (
+        Gravita = 'alta' -> GravitaNumerica = 7;
+        Gravita = 'media' -> GravitaNumerica = 5;
+        Gravita = 'bassa' -> GravitaNumerica = 3
+    ).
+
+efficacia_allarme_numerica(Incidente, EfficaciaNumerica) :-
+    efficacia_allarme(Incidente, Efficacia),
+    (
+        Efficacia = 'alta' -> EfficaciaNumerica = 7;
+        Efficacia = 'media' -> EfficaciaNumerica = 5;
+        Efficacia = 'bassa' -> EfficaciaNumerica = 3;
+        Efficacia = 'non_disponibile' -> EfficaciaNumerica = 1
+    ).
+
+
+manutenzione_necessaria(Stazione, DescrizioneManutenzione) :-
+    stazione(Stazione, 'YEAR_BUILD', AnnoCostruzione),
+    get_time(CurrentTimestamp),
+    stamp_date_time(CurrentTimestamp, DateTime, 'UTC'),
+    date_time_value(year, DateTime, CurrentYear),
+    EtaStazione is CurrentYear - AnnoCostruzione,
+    findall(IncidenteStazione, incidente(IncidenteStazione, 'Incident_Station_Area', Stazione), IncidentiStazione),
+    length(IncidentiStazione, NumeroIncidenti),
+    efficienza_stazione(Stazione, Eff),
+    atom_number(Eff, Efficienza),
+    EfficienzaSoglia is 2.5,
+    tempo_risposta_medio(Stazione, VelocitaMedia),
+    VelocitaSogliaSecondi is 1800,
+    VelocitaSogliaMinuti is VelocitaSogliaSecondi / 60,
+    NumeroIncidentiSoglia is 50,
+    EtaStazioneSoglia is 30,
+    (
+        (EtaStazione > EtaStazioneSoglia, NumeroIncidenti < NumeroIncidentiSoglia, Efficienza < EfficienzaSoglia, VelocitaMedia > VelocitaSogliaMinuti) -> DescrizioneManutenzione = "Manutenzione urgente: stazione vecchia, elevato numero di incidenti, bassa efficienza e lenta risposta";
+        (EtaStazione > EtaStazioneSoglia, NumeroIncidenti < NumeroIncidentiSoglia, Efficienza < EfficienzaSoglia) -> DescrizioneManutenzione = "È necessaria una manutenzione: stazione vecchia, elevato numero di incidenti e bassa efficienza";
+        (EtaStazione > EtaStazioneSoglia, NumeroIncidenti < NumeroIncidentiSoglia) -> DescrizioneManutenzione = "Potrebbe essere necessaria una manutenzione: stazione vecchia e elevato numero di incidenti";
+        (EtaStazione > EtaStazioneSoglia) -> DescrizioneManutenzione = "Manutenzione preventiva: stazione vecchia";
+        (Efficienza < EfficienzaSoglia) -> DescrizioneManutenzione = "Manutenzione per migliorare l'efficienza: efficienza al di sotto della soglia desiderata";
+        DescrizioneManutenzione = "Nessuna manutenzione necessaria"
+    ).
+
+rischio_inquinamento_elevato(Incidente) :-
+    durata_incidente(Incidente, Durata),
+    Durata > 60,
+    incidente(Incidente, 'Extent_Of_Fire', Estensione),
+    (Estensione = 'Spread beyond room of origin, same floor'; 
+    Estensione = 'Entire Structure';
+    Estensione = 'Spread to other floors, confined to building';
+    Estensione = 'Spread beyond building of origin, resulted in exposure fire(s)'),
+    incidente(Incidente, 'Material_First_Ignited', Materiale),
+    (Materiale = 'Plastic' ; Materiale = 'Rubbish, Trash, Waste').
+
+rischio_danni_strutturali_elevato(Incidente) :-
+    incidente(Incidente, 'Extent_Of_Fire', Estensione),
+    (Estensione = 'Entire Structure';
+    Estensione = 'Spread to other floors, confined to building';
+    Estensione = 'Spread beyond building of origin, resulted in exposure fire(s)'),
+    incidente(Incidente, 'Property_Use', TipoStruttura),
+    (TipoStruttura = 'School' ; TipoStruttura = 'Apartment, Flat, Tenement with Business'; 
+    TipoStruttura = ''),
+    incidente(Incidente, 'Area_of_Origin', AreaOrigine),
+    (AreaOrigine = 'Roof' ; AreaOrigine = 'Load-bearing walls').
+
+incidente_potenzialmente_pericoloso(Incidente) :-
+    incidente(Incidente, 'Possible_Cause', Causa),
+    (Causa = 'Undetermined'; Causa = 'Suspected Arson';  Causa = 'Suspected Vandalism'; Causa = 'Unattended'),
+    incidente(Incidente, 'Material_First_Ignited', Materiale),
+    (Materiale = 'Plastic' ; Materiale = 'Rubbish, Trash, Waste'),
+    incidente(Incidente, 'Ignition_Source', SorgenteAccensione),
+    (SorgenteAccensione = 'Undetermined'; SorgenteAccensione = 'Smoker Articles'; SorgenteAccensione = 'Chemical Reaction (eg. spontaneous combustion, etc.)').

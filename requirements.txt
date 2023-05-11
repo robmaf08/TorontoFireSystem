@@ -1,0 +1,14 @@
+pandas
+geopandas
+imblearn
+matplotlib
+numpy
+scikit-learn
+seaborn
+geopy
+osmnx
+networkx
+prettytable
+PyQt5
+pgmpy
+pickle

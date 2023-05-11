@@ -1,0 +1,880 @@
+neighbourhood('Yonge-Eglinton', 'Cluster', 0).
+neighbourhood('Yonge-Eglinton', 'Abitants', 11817).
+neighbourhood('Yonge-Eglinton', 'IncSpring', 17).
+neighbourhood('Yonge-Eglinton', 'IncSummer', 17).
+neighbourhood('Yonge-Eglinton', 'IncAutumn', 16).
+neighbourhood('Yonge-Eglinton', 'IncWinter', 13).
+neighbourhood('Yonge-St.Clair', 'Cluster', 0).
+neighbourhood('Yonge-St.Clair', 'Abitants', 12528).
+neighbourhood('Yonge-St.Clair', 'IncSpring', 21).
+neighbourhood('Yonge-St.Clair', 'IncSummer', 19).
+neighbourhood('Yonge-St.Clair', 'IncAutumn', 18).
+neighbourhood('Yonge-St.Clair', 'IncWinter', 16).
+neighbourhood('Yorkdale-Glen Park', 'Cluster', 0).
+neighbourhood('Yorkdale-Glen Park', 'Abitants', 14804).
+neighbourhood('Yorkdale-Glen Park', 'IncSpring', 21).
+neighbourhood('Yorkdale-Glen Park', 'IncSummer', 25).
+neighbourhood('Yorkdale-Glen Park', 'IncAutumn', 16).
+neighbourhood('Yorkdale-Glen Park', 'IncWinter', 10).
+neighbourhood('Lawrence Park North', 'Cluster', 0).
+neighbourhood('Lawrence Park North', 'Abitants', 14607).
+neighbourhood('Lawrence Park North', 'IncSpring', 12).
+neighbourhood('Lawrence Park North', 'IncSummer', 10).
+neighbourhood('Lawrence Park North', 'IncAutumn', 11).
+neighbourhood('Lawrence Park North', 'IncWinter', 20).
+neighbourhood('Newtonbrook East', 'Cluster', 0).
+neighbourhood('Newtonbrook East', 'Abitants', 16097).
+neighbourhood('Newtonbrook East', 'IncSpring', 19).
+neighbourhood('Newtonbrook East', 'IncSummer', 15).
+neighbourhood('Newtonbrook East', 'IncAutumn', 11).
+neighbourhood('Newtonbrook East', 'IncWinter', 13).
+neighbourhood('North Riverdale', 'Cluster', 0).
+neighbourhood('North Riverdale', 'Abitants', 11916).
+neighbourhood('North Riverdale', 'IncSpring', 25).
+neighbourhood('North Riverdale', 'IncSummer', 15).
+neighbourhood('North Riverdale', 'IncAutumn', 7).
+neighbourhood('North Riverdale', 'IncWinter', 15).
+neighbourhood('Oakwood Village', 'Cluster', 0).
+neighbourhood('Oakwood Village', 'Abitants', 2121).
+neighbourhood('Oakwood Village', 'IncSpring', 16).
+neighbourhood('Oakwood Village', 'IncSummer', 18).
+neighbourhood('Oakwood Village', 'IncAutumn', 16).
+neighbourhood('Oakwood Village', 'IncWinter', 22).
+neighbourhood('Old East York', 'Cluster', 0).
+neighbourhood('Old East York', 'Abitants', 9233).
+neighbourhood('Old East York', 'IncSpring', 27).
+neighbourhood('Old East York', 'IncSummer', 15).
+neighbourhood('Old East York', 'IncAutumn', 12).
+neighbourhood('Old East York', 'IncWinter', 16).
+neighbourhood('Playter Estates-Danforth', 'Cluster', 0).
+neighbourhood('Playter Estates-Danforth', 'Abitants', 7804).
+neighbourhood('Playter Estates-Danforth', 'IncSpring', 11).
+neighbourhood('Playter Estates-Danforth', 'IncSummer', 14).
+neighbourhood('Playter Estates-Danforth', 'IncAutumn', 16).
+neighbourhood('Playter Estates-Danforth', 'IncWinter', 14).
+neighbourhood('Pleasant View', 'Cluster', 0).
+neighbourhood('Pleasant View', 'Abitants', 15818).
+neighbourhood('Pleasant View', 'IncSpring', 12).
+neighbourhood('Pleasant View', 'IncSummer', 20).
+neighbourhood('Pleasant View', 'IncAutumn', 8).
+neighbourhood('Pleasant View', 'IncWinter', 15).
+neighbourhood('Rexdale-Kipling', 'Cluster', 0).
+neighbourhood('Rexdale-Kipling', 'Abitants', 10529).
+neighbourhood('Rexdale-Kipling', 'IncSpring', 16).
+neighbourhood('Rexdale-Kipling', 'IncSummer', 19).
+neighbourhood('Rexdale-Kipling', 'IncAutumn', 14).
+neighbourhood('Rexdale-Kipling', 'IncWinter', 15).
+neighbourhood('Runnymede-Bloor West Village', 'Cluster', 0).
+neighbourhood('Runnymede-Bloor West Village', 'Abitants', 1007).
+neighbourhood('Runnymede-Bloor West Village', 'IncSpring', 14).
+neighbourhood('Runnymede-Bloor West Village', 'IncSummer', 19).
+neighbourhood('Runnymede-Bloor West Village', 'IncAutumn', 10).
+neighbourhood('Runnymede-Bloor West Village', 'IncWinter', 9).
+neighbourhood('Thistletown-Beaumond Heights', 'Cluster', 0).
+neighbourhood('Thistletown-Beaumond Heights', 'Abitants', 1036).
+neighbourhood('Thistletown-Beaumond Heights', 'IncSpring', 14).
+neighbourhood('Thistletown-Beaumond Heights', 'IncSummer', 11).
+neighbourhood('Thistletown-Beaumond Heights', 'IncAutumn', 14).
+neighbourhood('Thistletown-Beaumond Heights', 'IncWinter', 12).
+neighbourhood('University', 'Cluster', 0).
+neighbourhood('University', 'Abitants', 7607).
+neighbourhood('University', 'IncSpring', 22).
+neighbourhood('University', 'IncSummer', 23).
+neighbourhood('University', 'IncAutumn', 15).
+neighbourhood('University', 'IncWinter', 20).
+neighbourhood('Victoria Village', 'Cluster', 0).
+neighbourhood('Victoria Village', 'Abitants', 1751).
+neighbourhood('Victoria Village', 'IncSpring', 27).
+neighbourhood('Victoria Village', 'IncSummer', 21).
+neighbourhood('Victoria Village', 'IncAutumn', 14).
+neighbourhood('Victoria Village', 'IncWinter', 17).
+neighbourhood('Woodbine Corridor', 'Cluster', 0).
+neighbourhood('Woodbine Corridor', 'Abitants', 12541).
+neighbourhood('Woodbine Corridor', 'IncSpring', 15).
+neighbourhood('Woodbine Corridor', 'IncSummer', 18).
+neighbourhood('Woodbine Corridor', 'IncAutumn', 12).
+neighbourhood('Woodbine Corridor', 'IncWinter', 15).
+neighbourhood('Woodbine-Lumsden', 'Cluster', 0).
+neighbourhood('Woodbine-Lumsden', 'Abitants', 7865).
+neighbourhood('Woodbine-Lumsden', 'IncSpring', 14).
+neighbourhood('Woodbine-Lumsden', 'IncSummer', 22).
+neighbourhood('Woodbine-Lumsden', 'IncAutumn', 19).
+neighbourhood('Woodbine-Lumsden', 'IncWinter', 11).
+neighbourhood('Alderwood', 'Cluster', 0).
+neighbourhood('Alderwood', 'Abitants', 12054).
+neighbourhood('Alderwood', 'IncSpring', 20).
+neighbourhood('Alderwood', 'IncSummer', 14).
+neighbourhood('Alderwood', 'IncAutumn', 9).
+neighbourhood('Alderwood', 'IncWinter', 12).
+neighbourhood('Bendale', 'Cluster', 0).
+neighbourhood('Bendale', 'Abitants', 2996).
+neighbourhood('Bendale', 'IncSpring', 26).
+neighbourhood('Bendale', 'IncSummer', 21).
+neighbourhood('Bendale', 'IncAutumn', 15).
+neighbourhood('Bendale', 'IncWinter', 14).
+neighbourhood('Blake-Jones', 'Cluster', 0).
+neighbourhood('Blake-Jones', 'Abitants', 7727).
+neighbourhood('Blake-Jones', 'IncSpring', 22).
+neighbourhood('Blake-Jones', 'IncSummer', 15).
+neighbourhood('Blake-Jones', 'IncAutumn', 16).
+neighbourhood('Blake-Jones', 'IncWinter', 14).
+neighbourhood('Broadview North', 'Cluster', 0).
+neighbourhood('Broadview North', 'Abitants', 11499).
+neighbourhood('Broadview North', 'IncSpring', 13).
+neighbourhood('Broadview North', 'IncSummer', 15).
+neighbourhood('Broadview North', 'IncAutumn', 6).
+neighbourhood('Broadview North', 'IncWinter', 14).
+neighbourhood('Cabbagetown-South St.James Town', 'Cluster', 0).
+neighbourhood('Cabbagetown-South St.James Town', 'Abitants', 11669).
+neighbourhood('Cabbagetown-South St.James Town', 'IncSpring', 15).
+neighbourhood('Cabbagetown-South St.James Town', 'IncSummer', 17).
+neighbourhood('Cabbagetown-South St.James Town', 'IncAutumn', 7).
+neighbourhood('Cabbagetown-South St.James Town', 'IncWinter', 15).
+neighbourhood('Centennial Scarborough', 'Cluster', 0).
+neighbourhood('Centennial Scarborough', 'Abitants', 13362).
+neighbourhood('Centennial Scarborough', 'IncSpring', 14).
+neighbourhood('Centennial Scarborough', 'IncSummer', 13).
+neighbourhood('Centennial Scarborough', 'IncAutumn', 10).
+neighbourhood('Centennial Scarborough', 'IncWinter', 16).
+neighbourhood('Cliffcrest', 'Cluster', 0).
+neighbourhood('Cliffcrest', 'Abitants', 15935).
+neighbourhood('Cliffcrest', 'IncSpring', 15).
+neighbourhood('Cliffcrest', 'IncSummer', 14).
+neighbourhood('Cliffcrest', 'IncAutumn', 11).
+neighbourhood('Cliffcrest', 'IncWinter', 14).
+neighbourhood('Corso Italia-Davenport', 'Cluster', 0).
+neighbourhood('Corso Italia-Davenport', 'Abitants', 14133).
+neighbourhood('Corso Italia-Davenport', 'IncSpring', 16).
+neighbourhood('Corso Italia-Davenport', 'IncSummer', 22).
+neighbourhood('Corso Italia-Davenport', 'IncAutumn', 9).
+neighbourhood('Corso Italia-Davenport', 'IncWinter', 14).
+neighbourhood('Elms-Old Rexdale', 'Cluster', 0).
+neighbourhood('Elms-Old Rexdale', 'Abitants', 9456).
+neighbourhood('Elms-Old Rexdale', 'IncSpring', 16).
+neighbourhood('Elms-Old Rexdale', 'IncSummer', 15).
+neighbourhood('Elms-Old Rexdale', 'IncAutumn', 9).
+neighbourhood('Elms-Old Rexdale', 'IncWinter', 11).
+neighbourhood('Etobicoke West Mall', 'Cluster', 0).
+neighbourhood('Etobicoke West Mall', 'Abitants', 11848).
+neighbourhood('Etobicoke West Mall', 'IncSpring', 25).
+neighbourhood('Etobicoke West Mall', 'IncSummer', 16).
+neighbourhood('Etobicoke West Mall', 'IncAutumn', 9).
+neighbourhood('Etobicoke West Mall', 'IncWinter', 16).
+neighbourhood('Forest Hill North', 'Cluster', 0).
+neighbourhood('Forest Hill North', 'Abitants', 12806).
+neighbourhood('Forest Hill North', 'IncSpring', 26).
+neighbourhood('Forest Hill North', 'IncSummer', 13).
+neighbourhood('Forest Hill North', 'IncAutumn', 15).
+neighbourhood('Forest Hill North', 'IncWinter', 10).
+neighbourhood('Guildwood', 'Cluster', 0).
+neighbourhood('Guildwood', 'Abitants', 9917).
+neighbourhood('Guildwood', 'IncSpring', 22).
+neighbourhood('Guildwood', 'IncSummer', 14).
+neighbourhood('Guildwood', 'IncAutumn', 13).
+neighbourhood('Guildwood', 'IncWinter', 19).
+neighbourhood('Ionview', 'Cluster', 0).
+neighbourhood('Ionview', 'Abitants', 13641).
+neighbourhood('Ionview', 'IncSpring', 20).
+neighbourhood('Ionview', 'IncSummer', 19).
+neighbourhood('Ionview', 'IncAutumn', 14).
+neighbourhood('Ionview', 'IncWinter', 18).
+neighbourhood('Junction Area', 'Cluster', 0).
+neighbourhood('Junction Area', 'Abitants', 14366).
+neighbourhood('Junction Area', 'IncSpring', 15).
+neighbourhood('Junction Area', 'IncSummer', 18).
+neighbourhood('Junction Area', 'IncAutumn', 14).
+neighbourhood('Junction Area', 'IncWinter', 21).
+neighbourhood('Keelesdale-Eglinton West', 'Cluster', 0).
+neighbourhood('Keelesdale-Eglinton West', 'Abitants', 11058).
+neighbourhood('Keelesdale-Eglinton West', 'IncSpring', 17).
+neighbourhood('Keelesdale-Eglinton West', 'IncSummer', 16).
+neighbourhood('Keelesdale-Eglinton West', 'IncAutumn', 11).
+neighbourhood('Keelesdale-Eglinton West', 'IncWinter', 23).
+neighbourhood('Kingsview Village-The Westway', 'Cluster', 0).
+neighbourhood('Kingsview Village-The Westway', 'Abitants', 22).
+neighbourhood('Kingsview Village-The Westway', 'IncSpring', 19).
+neighbourhood('Kingsview Village-The Westway', 'IncSummer', 11).
+neighbourhood('Kingsview Village-The Westway', 'IncAutumn', 13).
+neighbourhood('Kingsview Village-The Westway', 'IncWinter', 23).
+neighbourhood('Kingsway South', 'Cluster', 0).
+neighbourhood('Kingsway South', 'Abitants', 9271).
+neighbourhood('Kingsway South', 'IncSpring', 16).
+neighbourhood('Kingsway South', 'IncSummer', 18).
+neighbourhood('Kingsway South', 'IncAutumn', 11).
+neighbourhood('Kingsway South', 'IncWinter', 18).
+neighbourhood('Wychwood', 'Cluster', 1).
+neighbourhood('Wychwood', 'Abitants', 14349).
+neighbourhood('Wychwood', 'IncSpring', 29).
+neighbourhood('Wychwood', 'IncSummer', 14).
+neighbourhood('Wychwood', 'IncAutumn', 19).
+neighbourhood('Wychwood', 'IncWinter', 35).
+neighbourhood('Morningside', 'Cluster', 1).
+neighbourhood('Morningside', 'Abitants', 17455).
+neighbourhood('Morningside', 'IncSpring', 24).
+neighbourhood('Morningside', 'IncSummer', 19).
+neighbourhood('Morningside', 'IncAutumn', 18).
+neighbourhood('Morningside', 'IncWinter', 20).
+neighbourhood('New Toronto', 'Cluster', 1).
+neighbourhood('New Toronto', 'Abitants', 11463).
+neighbourhood('New Toronto', 'IncSpring', 21).
+neighbourhood('New Toronto', 'IncSummer', 17).
+neighbourhood('New Toronto', 'IncAutumn', 16).
+neighbourhood('New Toronto', 'IncWinter', 24).
+neighbourhood('Oakridge', 'Cluster', 1).
+neighbourhood('Oakridge', 'Abitants', 13845).
+neighbourhood('Oakridge', 'IncSpring', 20).
+neighbourhood('Oakridge', 'IncSummer', 20).
+neighbourhood('Oakridge', 'IncAutumn', 17).
+neighbourhood('Oakridge', 'IncWinter', 24).
+neighbourhood('Palmerston-Little Italy', 'Cluster', 1).
+neighbourhood('Palmerston-Little Italy', 'Abitants', 13826).
+neighbourhood('Palmerston-Little Italy', 'IncSpring', 27).
+neighbourhood('Palmerston-Little Italy', 'IncSummer', 27).
+neighbourhood('Palmerston-Little Italy', 'IncAutumn', 20).
+neighbourhood('Palmerston-Little Italy', 'IncWinter', 28).
+neighbourhood('Pelmo Park-Humberlea', 'Cluster', 1).
+neighbourhood('Pelmo Park-Humberlea', 'Abitants', 10722).
+neighbourhood('Pelmo Park-Humberlea', 'IncSpring', 34).
+neighbourhood('Pelmo Park-Humberlea', 'IncSummer', 32).
+neighbourhood('Pelmo Park-Humberlea', 'IncAutumn', 12).
+neighbourhood('Pelmo Park-Humberlea', 'IncWinter', 18).
+neighbourhood('Rockcliffe-Smythe', 'Cluster', 1).
+neighbourhood('Rockcliffe-Smythe', 'Abitants', 22246).
+neighbourhood('Rockcliffe-Smythe', 'IncSpring', 21).
+neighbourhood('Rockcliffe-Smythe', 'IncSummer', 20).
+neighbourhood('Rockcliffe-Smythe', 'IncAutumn', 21).
+neighbourhood('Rockcliffe-Smythe', 'IncWinter', 19).
+neighbourhood('Roncesvalles', 'Cluster', 1).
+neighbourhood('Roncesvalles', 'Abitants', 14974).
+neighbourhood('Roncesvalles', 'IncSpring', 23).
+neighbourhood('Roncesvalles', 'IncSummer', 20).
+neighbourhood('Roncesvalles', 'IncAutumn', 26).
+neighbourhood('Roncesvalles', 'IncWinter', 21).
+neighbourhood('Scarborough Village', 'Cluster', 1).
+neighbourhood('Scarborough Village', 'Abitants', 16724).
+neighbourhood('Scarborough Village', 'IncSpring', 23).
+neighbourhood('Scarborough Village', 'IncSummer', 21).
+neighbourhood('Scarborough Village', 'IncAutumn', 16).
+neighbourhood('Scarborough Village', 'IncWinter', 25).
+neighbourhood('Weston', 'Cluster', 1).
+neighbourhood('Weston', 'Abitants', 17992).
+neighbourhood('Weston', 'IncSpring', 28).
+neighbourhood('Weston', 'IncSummer', 28).
+neighbourhood('Weston', 'IncAutumn', 19).
+neighbourhood('Weston', 'IncWinter', 23).
+neighbourhood('Willowridge-Martingrove-Richview', 'Cluster', 1).
+neighbourhood('Willowridge-Martingrove-Richview', 'Abitants', 22156).
+neighbourhood('Willowridge-Martingrove-Richview', 'IncSpring', 35).
+neighbourhood('Willowridge-Martingrove-Richview', 'IncSummer', 20).
+neighbourhood('Willowridge-Martingrove-Richview', 'IncAutumn', 21).
+neighbourhood('Willowridge-Martingrove-Richview', 'IncWinter', 27).
+neighbourhood('Agincourt South-Malvern West', 'Cluster', 1).
+neighbourhood('Agincourt South-Malvern West', 'Abitants', 23757).
+neighbourhood('Agincourt South-Malvern West', 'IncSpring', 23).
+neighbourhood('Agincourt South-Malvern West', 'IncSummer', 20).
+neighbourhood('Agincourt South-Malvern West', 'IncAutumn', 13).
+neighbourhood('Agincourt South-Malvern West', 'IncWinter', 24).
+neighbourhood('Bathurst Manor', 'Cluster', 1).
+neighbourhood('Bathurst Manor', 'Abitants', 15873).
+neighbourhood('Bathurst Manor', 'IncSpring', 25).
+neighbourhood('Bathurst Manor', 'IncSummer', 26).
+neighbourhood('Bathurst Manor', 'IncAutumn', 14).
+neighbourhood('Bathurst Manor', 'IncWinter', 13).
+neighbourhood('Birchcliffe-Cliffside', 'Cluster', 1).
+neighbourhood('Birchcliffe-Cliffside', 'Abitants', 22291).
+neighbourhood('Birchcliffe-Cliffside', 'IncSpring', 19).
+neighbourhood('Birchcliffe-Cliffside', 'IncSummer', 13).
+neighbourhood('Birchcliffe-Cliffside', 'IncAutumn', 20).
+neighbourhood('Birchcliffe-Cliffside', 'IncWinter', 23).
+neighbourhood('Briar Hill-Belgravia', 'Cluster', 1).
+neighbourhood('Briar Hill-Belgravia', 'Abitants', 14257).
+neighbourhood('Briar Hill-Belgravia', 'IncSpring', 24).
+neighbourhood('Briar Hill-Belgravia', 'IncSummer', 18).
+neighbourhood('Briar Hill-Belgravia', 'IncAutumn', 16).
+neighbourhood('Briar Hill-Belgravia', 'IncWinter', 23).
+neighbourhood('Clanton Park', 'Cluster', 1).
+neighbourhood('Clanton Park', 'Abitants', 16472).
+neighbourhood('Clanton Park', 'IncSpring', 28).
+neighbourhood('Clanton Park', 'IncSummer', 16).
+neighbourhood('Clanton Park', 'IncAutumn', 17).
+neighbourhood('Clanton Park', 'IncWinter', 35).
+neighbourhood('Dorset Park', 'Cluster', 1).
+neighbourhood('Dorset Park', 'Abitants', 25003).
+neighbourhood('Dorset Park', 'IncSpring', 29).
+neighbourhood('Dorset Park', 'IncSummer', 26).
+neighbourhood('Dorset Park', 'IncAutumn', 17).
+neighbourhood('Dorset Park', 'IncWinter', 21).
+neighbourhood('Eglinton East', 'Cluster', 1).
+neighbourhood('Eglinton East', 'Abitants', 22776).
+neighbourhood('Eglinton East', 'IncSpring', 24).
+neighbourhood('Eglinton East', 'IncSummer', 15).
+neighbourhood('Eglinton East', 'IncAutumn', 20).
+neighbourhood('Eglinton East', 'IncWinter', 26).
+neighbourhood('Englemount-Lawrence', 'Cluster', 1).
+neighbourhood('Englemount-Lawrence', 'Abitants', 22372).
+neighbourhood('Englemount-Lawrence', 'IncSpring', 29).
+neighbourhood('Englemount-Lawrence', 'IncSummer', 26).
+neighbourhood('Englemount-Lawrence', 'IncAutumn', 15).
+neighbourhood('Englemount-Lawrence', 'IncWinter', 27).
+neighbourhood('Flemingdon Park', 'Cluster', 1).
+neighbourhood('Flemingdon Park', 'Abitants', 21933).
+neighbourhood('Flemingdon Park', 'IncSpring', 28).
+neighbourhood('Flemingdon Park', 'IncSummer', 20).
+neighbourhood('Flemingdon Park', 'IncAutumn', 13).
+neighbourhood('Flemingdon Park', 'IncWinter', 20).
+neighbourhood('Greenwood-Coxwell', 'Cluster', 1).
+neighbourhood('Greenwood-Coxwell', 'Abitants', 14417).
+neighbourhood('Greenwood-Coxwell', 'IncSpring', 26).
+neighbourhood('Greenwood-Coxwell', 'IncSummer', 22).
+neighbourhood('Greenwood-Coxwell', 'IncAutumn', 17).
+neighbourhood('Greenwood-Coxwell', 'IncWinter', 17).
+neighbourhood('Henry Farm', 'Cluster', 1).
+neighbourhood('Henry Farm', 'Abitants', 15723).
+neighbourhood('Henry Farm', 'IncSpring', 26).
+neighbourhood('Henry Farm', 'IncSummer', 21).
+neighbourhood('Henry Farm', 'IncAutumn', 16).
+neighbourhood('Henry Farm', 'IncWinter', 18).
+neighbourhood('Humbermede', 'Cluster', 1).
+neighbourhood('Humbermede', 'Abitants', 15545).
+neighbourhood('Humbermede', 'IncSpring', 20).
+neighbourhood('Humbermede', 'IncSummer', 28).
+neighbourhood('Humbermede', 'IncAutumn', 18).
+neighbourhood('Humbermede', 'IncWinter', 20).
+neighbourhood('Kennedy Park', 'Cluster', 1).
+neighbourhood('Kennedy Park', 'Abitants', 17123).
+neighbourhood('Kennedy Park', 'IncSpring', 24).
+neighbourhood('Kennedy Park', 'IncSummer', 30).
+neighbourhood('Kennedy Park', 'IncAutumn', 13).
+neighbourhood('Kennedy Park', 'IncWinter', 19).
+neighbourhood('York University Heights', 'Cluster', 2).
+neighbourhood('York University Heights', 'Abitants', 27593).
+neighbourhood('York University Heights', 'IncSpring', 44).
+neighbourhood('York University Heights', 'IncSummer', 32).
+neighbourhood('York University Heights', 'IncAutumn', 43).
+neighbourhood('York University Heights', 'IncWinter', 40).
+neighbourhood('Malvern', 'Cluster', 2).
+neighbourhood('Malvern', 'Abitants', 43794).
+neighbourhood('Malvern', 'IncSpring', 59).
+neighbourhood('Malvern', 'IncSummer', 38).
+neighbourhood('Malvern', 'IncAutumn', 40).
+neighbourhood('Malvern', 'IncWinter', 37).
+neighbourhood('Willowdale East', 'Cluster', 2).
+neighbourhood('Willowdale East', 'Abitants', 50434).
+neighbourhood('Willowdale East', 'IncSpring', 42).
+neighbourhood('Willowdale East', 'IncSummer', 32).
+neighbourhood('Willowdale East', 'IncAutumn', 29).
+neighbourhood('Willowdale East', 'IncWinter', 25).
+neighbourhood('Woburn', 'Cluster', 2).
+neighbourhood('Woburn', 'Abitants', 53485).
+neighbourhood('Woburn', 'IncSpring', 37).
+neighbourhood('Woburn', 'IncSummer', 41).
+neighbourhood('Woburn', 'IncAutumn', 34).
+neighbourhood('Woburn', 'IncWinter', 36).
+neighbourhood('Annex', 'Cluster', 2).
+neighbourhood('Annex', 'Abitants', 30526).
+neighbourhood('Annex', 'IncSpring', 39).
+neighbourhood('Annex', 'IncSummer', 34).
+neighbourhood('Annex', 'IncAutumn', 38).
+neighbourhood('Annex', 'IncWinter', 31).
+neighbourhood('Glenfield-Jane Heights', 'Cluster', 2).
+neighbourhood('Glenfield-Jane Heights', 'Abitants', 30491).
+neighbourhood('Glenfield-Jane Heights', 'IncSpring', 53).
+neighbourhood('Glenfield-Jane Heights', 'IncSummer', 39).
+neighbourhood('Glenfield-Jane Heights', 'IncAutumn', 40).
+neighbourhood('Glenfield-Jane Heights', 'IncWinter', 33).
+neighbourhood('Moss Park', 'Cluster', 3).
+neighbourhood('Moss Park', 'Abitants', 20506).
+neighbourhood('Moss Park', 'IncSpring', 67).
+neighbourhood('Moss Park', 'IncSummer', 63).
+neighbourhood('Moss Park', 'IncAutumn', 67).
+neighbourhood('Moss Park', 'IncWinter', 74).
+neighbourhood('Mount Olive-Silverstone-Jamestown', 'Cluster', 3).
+neighbourhood('Mount Olive-Silverstone-Jamestown', 'Abitants', 32954).
+neighbourhood('Mount Olive-Silverstone-Jamestown', 'IncSpring', 67).
+neighbourhood('Mount Olive-Silverstone-Jamestown', 'IncSummer', 56).
+neighbourhood('Mount Olive-Silverstone-Jamestown', 'IncAutumn', 47).
+neighbourhood('Mount Olive-Silverstone-Jamestown', 'IncWinter', 59).
+neighbourhood('North St.James Town', 'Cluster', 3).
+neighbourhood('North St.James Town', 'Abitants', 18615).
+neighbourhood('North St.James Town', 'IncSpring', 76).
+neighbourhood('North St.James Town', 'IncSummer', 52).
+neighbourhood('North St.James Town', 'IncAutumn', 46).
+neighbourhood('North St.James Town', 'IncWinter', 51).
+neighbourhood('Bay Street Corridor', 'Cluster', 3).
+neighbourhood('Bay Street Corridor', 'Abitants', 25797).
+neighbourhood('Bay Street Corridor', 'IncSpring', 56).
+neighbourhood('Bay Street Corridor', 'IncSummer', 46).
+neighbourhood('Bay Street Corridor', 'IncAutumn', 58).
+neighbourhood('Bay Street Corridor', 'IncWinter', 52).
+neighbourhood('Church-Yonge Corridor', 'Cluster', 3).
+neighbourhood('Church-Yonge Corridor', 'Abitants', 3134).
+neighbourhood('Church-Yonge Corridor', 'IncSpring', 73).
+neighbourhood('Church-Yonge Corridor', 'IncSummer', 61).
+neighbourhood('Church-Yonge Corridor', 'IncAutumn', 46).
+neighbourhood('Church-Yonge Corridor', 'IncWinter', 71).
+neighbourhood('Kensington-Chinatown', 'Cluster', 3).
+neighbourhood('Kensington-Chinatown', 'Abitants', 17945).
+neighbourhood('Kensington-Chinatown', 'IncSpring', 82).
+neighbourhood('Kensington-Chinatown', 'IncSummer', 73).
+neighbourhood('Kensington-Chinatown', 'IncAutumn', 56).
+neighbourhood('Kensington-Chinatown', 'IncWinter', 60).
+neighbourhood('Lambton Baby Point', 'Cluster', 4).
+neighbourhood('Lambton Baby Point', 'Abitants', 7985).
+neighbourhood('Lambton Baby Point', 'IncSpring', 14).
+neighbourhood('Lambton Baby Point', 'IncSummer', 8).
+neighbourhood('Lambton Baby Point', 'IncAutumn', 7).
+neighbourhood('Lambton Baby Point', 'IncWinter', 10).
+neighbourhood('Lansing-Westgate', 'Cluster', 4).
+neighbourhood('Lansing-Westgate', 'Abitants', 16164).
+neighbourhood('Lansing-Westgate', 'IncSpring', 7).
+neighbourhood('Lansing-Westgate', 'IncSummer', 10).
+neighbourhood('Lansing-Westgate', 'IncAutumn', 10).
+neighbourhood('Lansing-Westgate', 'IncWinter', 11).
+neighbourhood('Lawrence Park South', 'Cluster', 4).
+neighbourhood('Lawrence Park South', 'Abitants', 15179).
+neighbourhood('Lawrence Park South', 'IncSpring', 6).
+neighbourhood('Lawrence Park South', 'IncSummer', 6).
+neighbourhood('Lawrence Park South', 'IncAutumn', 1).
+neighbourhood('Lawrence Park South', 'IncWinter', 10).
+neighbourhood('Leaside-Bennington', 'Cluster', 4).
+neighbourhood('Leaside-Bennington', 'Abitants', 16828).
+neighbourhood('Leaside-Bennington', 'IncSpring', 7).
+neighbourhood('Leaside-Bennington', 'IncSummer', 5).
+neighbourhood('Leaside-Bennington', 'IncAutumn', 11).
+neighbourhood('Leaside-Bennington', 'IncWinter', 13).
+neighbourhood('Long Branch', 'Cluster', 4).
+neighbourhood('Long Branch', 'Abitants', 10084).
+neighbourhood('Long Branch', 'IncSpring', 16).
+neighbourhood('Long Branch', 'IncSummer', 10).
+neighbourhood('Long Branch', 'IncAutumn', 14).
+neighbourhood('Long Branch', 'IncWinter', 6).
+neighbourhood('Maple Leaf', 'Cluster', 4).
+neighbourhood('Maple Leaf', 'Abitants', 10111).
+neighbourhood('Maple Leaf', 'IncSpring', 12).
+neighbourhood('Maple Leaf', 'IncSummer', 10).
+neighbourhood('Maple Leaf', 'IncAutumn', 3).
+neighbourhood('Maple Leaf', 'IncWinter', 10).
+neighbourhood('Markland Wood', 'Cluster', 4).
+neighbourhood('Markland Wood', 'Abitants', 10554).
+neighbourhood('Markland Wood', 'IncSpring', 10).
+neighbourhood('Markland Wood', 'IncSummer', 6).
+neighbourhood('Markland Wood', 'IncAutumn', 5).
+neighbourhood('Markland Wood', 'IncWinter', 8).
+neighbourhood('Mount Pleasant East', 'Cluster', 4).
+neighbourhood('Mount Pleasant East', 'Abitants', 16775).
+neighbourhood('Mount Pleasant East', 'IncSpring', 8).
+neighbourhood('Mount Pleasant East', 'IncSummer', 11).
+neighbourhood('Mount Pleasant East', 'IncAutumn', 8).
+neighbourhood('Mount Pleasant East', 'IncWinter', 10).
+neighbourhood('Princess-Rosethorn', 'Cluster', 4).
+neighbourhood('Princess-Rosethorn', 'Abitants', 11051).
+neighbourhood('Princess-Rosethorn', 'IncSpring', 12).
+neighbourhood('Princess-Rosethorn', 'IncSummer', 4).
+neighbourhood('Princess-Rosethorn', 'IncAutumn', 2).
+neighbourhood('Princess-Rosethorn', 'IncWinter', 7).
+neighbourhood('Rosedale-Moore Park', 'Cluster', 4).
+neighbourhood('Rosedale-Moore Park', 'Abitants', 20923).
+neighbourhood('Rosedale-Moore Park', 'IncSpring', 10).
+neighbourhood('Rosedale-Moore Park', 'IncSummer', 5).
+neighbourhood('Rosedale-Moore Park', 'IncAutumn', 7).
+neighbourhood('Rosedale-Moore Park', 'IncWinter', 11).
+neighbourhood('St.Andrew-Windfields', 'Cluster', 4).
+neighbourhood('St.Andrew-Windfields', 'Abitants', 17812).
+neighbourhood('St.Andrew-Windfields', 'IncSpring', 14).
+neighbourhood('St.Andrew-Windfields', 'IncSummer', 8).
+neighbourhood('St.Andrew-Windfields', 'IncAutumn', 11).
+neighbourhood('St.Andrew-Windfields', 'IncWinter', 14).
+neighbourhood('Steeles', 'Cluster', 4).
+neighbourhood('Steeles', 'Abitants', 24623).
+neighbourhood('Steeles', 'IncSpring', 8).
+neighbourhood('Steeles', 'IncSummer', 4).
+neighbourhood('Steeles', 'IncAutumn', 10).
+neighbourhood('Steeles', 'IncWinter', 8).
+neighbourhood('Bayview Woods-Steeles', 'Cluster', 4).
+neighbourhood('Bayview Woods-Steeles', 'Abitants', 13154).
+neighbourhood('Bayview Woods-Steeles', 'IncSpring', 6).
+neighbourhood('Bayview Woods-Steeles', 'IncSummer', 10).
+neighbourhood('Bayview Woods-Steeles', 'IncAutumn', 4).
+neighbourhood('Bayview Woods-Steeles', 'IncWinter', 4).
+neighbourhood('Beechborough-Greenbrook', 'Cluster', 4).
+neighbourhood('Beechborough-Greenbrook', 'Abitants', 6577).
+neighbourhood('Beechborough-Greenbrook', 'IncSpring', 13).
+neighbourhood('Beechborough-Greenbrook', 'IncSummer', 6).
+neighbourhood('Beechborough-Greenbrook', 'IncAutumn', 17).
+neighbourhood('Beechborough-Greenbrook', 'IncWinter', 8).
+neighbourhood('Bridle Path-Sunnybrook-York Mills', 'Cluster', 4).
+neighbourhood('Bridle Path-Sunnybrook-York Mills', 'Abitants', 9266).
+neighbourhood('Bridle Path-Sunnybrook-York Mills', 'IncSpring', 6).
+neighbourhood('Bridle Path-Sunnybrook-York Mills', 'IncSummer', 3).
+neighbourhood('Bridle Path-Sunnybrook-York Mills', 'IncAutumn', 2).
+neighbourhood('Bridle Path-Sunnybrook-York Mills', 'IncWinter', 9).
+neighbourhood('Brookhaven-Amesbury', 'Cluster', 4).
+neighbourhood('Brookhaven-Amesbury', 'Abitants', 17757).
+neighbourhood('Brookhaven-Amesbury', 'IncSpring', 8).
+neighbourhood('Brookhaven-Amesbury', 'IncSummer', 10).
+neighbourhood('Brookhaven-Amesbury', 'IncAutumn', 14).
+neighbourhood('Brookhaven-Amesbury', 'IncWinter', 11).
+neighbourhood('Caledonia-Fairbank', 'Cluster', 4).
+neighbourhood('Caledonia-Fairbank', 'Abitants', 9955).
+neighbourhood('Caledonia-Fairbank', 'IncSpring', 13).
+neighbourhood('Caledonia-Fairbank', 'IncSummer', 7).
+neighbourhood('Caledonia-Fairbank', 'IncAutumn', 11).
+neighbourhood('Caledonia-Fairbank', 'IncWinter', 16).
+neighbourhood('Casa Loma', 'Cluster', 4).
+neighbourhood('Casa Loma', 'Abitants', 10968).
+neighbourhood('Casa Loma', 'IncSpring', 16).
+neighbourhood('Casa Loma', 'IncSummer', 11).
+neighbourhood('Casa Loma', 'IncAutumn', 10).
+neighbourhood('Casa Loma', 'IncWinter', 7).
+neighbourhood('Danforth', 'Cluster', 4).
+neighbourhood('Danforth', 'Abitants', 9666).
+neighbourhood('Danforth', 'IncSpring', 11).
+neighbourhood('Danforth', 'IncSummer', 12).
+neighbourhood('Danforth', 'IncAutumn', 11).
+neighbourhood('Danforth', 'IncWinter', 9).
+neighbourhood('Danforth East York', 'Cluster', 4).
+neighbourhood('Danforth East York', 'Abitants', 1718).
+neighbourhood('Danforth East York', 'IncSpring', 4).
+neighbourhood('Danforth East York', 'IncSummer', 8).
+neighbourhood('Danforth East York', 'IncAutumn', 8).
+neighbourhood('Danforth East York', 'IncWinter', 4).
+neighbourhood('Edenbridge-Humber Valley', 'Cluster', 4).
+neighbourhood('Edenbridge-Humber Valley', 'Abitants', 15535).
+neighbourhood('Edenbridge-Humber Valley', 'IncSpring', 4).
+neighbourhood('Edenbridge-Humber Valley', 'IncSummer', 8).
+neighbourhood('Edenbridge-Humber Valley', 'IncAutumn', 5).
+neighbourhood('Edenbridge-Humber Valley', 'IncWinter', 8).
+neighbourhood('Eringate-Centennial-West Deane', 'Cluster', 4).
+neighbourhood('Eringate-Centennial-West Deane', 'Abitants', 18588).
+neighbourhood('Eringate-Centennial-West Deane', 'IncSpring', 7).
+neighbourhood('Eringate-Centennial-West Deane', 'IncSummer', 11).
+neighbourhood('Eringate-Centennial-West Deane', 'IncAutumn', 6).
+neighbourhood('Eringate-Centennial-West Deane', 'IncWinter', 8).
+neighbourhood('Forest Hill South', 'Cluster', 4).
+neighbourhood('Forest Hill South', 'Abitants', 10732).
+neighbourhood('Forest Hill South', 'IncSpring', 14).
+neighbourhood('Forest Hill South', 'IncSummer', 3).
+neighbourhood('Forest Hill South', 'IncAutumn', 8).
+neighbourhood('Forest Hill South', 'IncWinter', 10).
+neighbourhood('Highland Creek', 'Cluster', 4).
+neighbourhood('Highland Creek', 'Abitants', 12494).
+neighbourhood('Highland Creek', 'IncSpring', 7).
+neighbourhood('Highland Creek', 'IncSummer', 16).
+neighbourhood('Highland Creek', 'IncAutumn', 7).
+neighbourhood('Highland Creek', 'IncWinter', 14).
+neighbourhood('Hillcrest Village', 'Cluster', 4).
+neighbourhood('Hillcrest Village', 'Abitants', 16934).
+neighbourhood('Hillcrest Village', 'IncSpring', 6).
+neighbourhood('Hillcrest Village', 'IncSummer', 9).
+neighbourhood('Hillcrest Village', 'IncAutumn', 10).
+neighbourhood('Hillcrest Village', 'IncWinter', 6).
+neighbourhood('Humber Heights-Westmount', 'Cluster', 4).
+neighbourhood('Humber Heights-Westmount', 'Abitants', 10948).
+neighbourhood('Humber Heights-Westmount', 'IncSpring', 16).
+neighbourhood('Humber Heights-Westmount', 'IncSummer', 6).
+neighbourhood('Humber Heights-Westmount', 'IncAutumn', 10).
+neighbourhood('Humber Heights-Westmount', 'IncWinter', 12).
+neighbourhood('Humewood-Cedarvale', 'Cluster', 4).
+neighbourhood('Humewood-Cedarvale', 'Abitants', 14365).
+neighbourhood('Humewood-Cedarvale', 'IncSpring', 22).
+neighbourhood('Humewood-Cedarvale', 'IncSummer', 7).
+neighbourhood('Humewood-Cedarvale', 'IncAutumn', 6).
+neighbourhood('Humewood-Cedarvale', 'IncWinter', 9).
+neighbourhood('Milliken', 'Cluster', 5).
+neighbourhood('Milliken', 'Abitants', 26572).
+neighbourhood('Milliken', 'IncSpring', 23).
+neighbourhood('Milliken', 'IncSummer', 15).
+neighbourhood('Milliken', 'IncAutumn', 17).
+neighbourhood('Milliken', 'IncWinter', 18).
+neighbourhood('Newtonbrook West', 'Cluster', 5).
+neighbourhood('Newtonbrook West', 'Abitants', 23831).
+neighbourhood('Newtonbrook West', 'IncSpring', 14).
+neighbourhood('Newtonbrook West', 'IncSummer', 10).
+neighbourhood('Newtonbrook West', 'IncAutumn', 14).
+neighbourhood('Newtonbrook West', 'IncWinter', 11).
+neighbourhood('O-Connor-Parkview', 'Cluster', 5).
+neighbourhood('O-Connor-Parkview', 'Abitants', 18675).
+neighbourhood('O-Connor-Parkview', 'IncSpring', 15).
+neighbourhood('O-Connor-Parkview', 'IncSummer', 13).
+neighbourhood('O-Connor-Parkview', 'IncAutumn', 8).
+neighbourhood('O-Connor-Parkview', 'IncWinter', 16).
+neighbourhood('Rouge', 'Cluster', 5).
+neighbourhood('Rouge', 'Abitants', 46496).
+neighbourhood('Rouge', 'IncSpring', 5).
+neighbourhood('Rouge', 'IncSummer', 10).
+neighbourhood('Rouge', 'IncAutumn', 5).
+neighbourhood('Rouge', 'IncWinter', 6).
+neighbourhood('South Riverdale', 'Cluster', 5).
+neighbourhood('South Riverdale', 'Abitants', 27876).
+neighbourhood('South Riverdale', 'IncSpring', 12).
+neighbourhood('South Riverdale', 'IncSummer', 12).
+neighbourhood('South Riverdale', 'IncAutumn', 16).
+neighbourhood('South Riverdale', 'IncWinter', 15).
+neighbourhood('Stonegate-Queensway', 'Cluster', 5).
+neighbourhood('Stonegate-Queensway', 'Abitants', 25051).
+neighbourhood('Stonegate-Queensway', 'IncSpring', 18).
+neighbourhood('Stonegate-Queensway', 'IncSummer', 14).
+neighbourhood('Stonegate-Queensway', 'IncAutumn', 12).
+neighbourhood('Stonegate-Queensway', 'IncWinter', 8).
+neighbourhood('The Beaches', 'Cluster', 5).
+neighbourhood('The Beaches', 'Abitants', 21567).
+neighbourhood('The Beaches', 'IncSpring', 17).
+neighbourhood('The Beaches', 'IncSummer', 13).
+neighbourhood('The Beaches', 'IncAutumn', 14).
+neighbourhood('The Beaches', 'IncWinter', 20).
+neighbourhood('Thorncliffe Park', 'Cluster', 5).
+neighbourhood('Thorncliffe Park', 'Abitants', 21108).
+neighbourhood('Thorncliffe Park', 'IncSpring', 19).
+neighbourhood('Thorncliffe Park', 'IncSummer', 11).
+neighbourhood('Thorncliffe Park', 'IncAutumn', 19).
+neighbourhood('Thorncliffe Park', 'IncWinter', 12).
+neighbourhood('Westminster-Branson', 'Cluster', 5).
+neighbourhood('Westminster-Branson', 'Abitants', 26274).
+neighbourhood('Westminster-Branson', 'IncSpring', 19).
+neighbourhood('Westminster-Branson', 'IncSummer', 13).
+neighbourhood('Westminster-Branson', 'IncAutumn', 13).
+neighbourhood('Westminster-Branson', 'IncWinter', 20).
+neighbourhood('Wexford/Maryvale', 'Cluster', 5).
+neighbourhood('Wexford/Maryvale', 'Abitants', 27917).
+neighbourhood('Wexford/Maryvale', 'IncSpring', 20).
+neighbourhood('Wexford/Maryvale', 'IncSummer', 15).
+neighbourhood('Wexford/Maryvale', 'IncAutumn', 16).
+neighbourhood('Wexford/Maryvale', 'IncWinter', 14).
+neighbourhood('Willowdale West', 'Cluster', 5).
+neighbourhood('Willowdale West', 'Abitants', 16936).
+neighbourhood('Willowdale West', 'IncSpring', 12).
+neighbourhood('Willowdale West', 'IncSummer', 14).
+neighbourhood('Willowdale West', 'IncAutumn', 15).
+neighbourhood('Willowdale West', 'IncWinter', 13).
+neighbourhood('Agincourt North', 'Cluster', 5).
+neighbourhood('Agincourt North', 'Abitants', 29113).
+neighbourhood('Agincourt North', 'IncSpring', 16).
+neighbourhood('Agincourt North', 'IncSummer', 7).
+neighbourhood('Agincourt North', 'IncAutumn', 8).
+neighbourhood('Agincourt North', 'IncWinter', 22).
+neighbourhood('Banbury-Don Mills', 'Cluster', 5).
+neighbourhood('Banbury-Don Mills', 'Abitants', 27695).
+neighbourhood('Banbury-Don Mills', 'IncSpring', 11).
+neighbourhood('Banbury-Don Mills', 'IncSummer', 11).
+neighbourhood('Banbury-Don Mills', 'IncAutumn', 12).
+neighbourhood('Banbury-Don Mills', 'IncWinter', 6).
+neighbourhood('Bayview Village', 'Cluster', 5).
+neighbourhood('Bayview Village', 'Abitants', 21396).
+neighbourhood('Bayview Village', 'IncSpring', 11).
+neighbourhood('Bayview Village', 'IncSummer', 13).
+neighbourhood('Bayview Village', 'IncAutumn', 12).
+neighbourhood('Bayview Village', 'IncWinter', 10).
+neighbourhood('Bedford Park-Nortown', 'Cluster', 5).
+neighbourhood('Bedford Park-Nortown', 'Abitants', 23236).
+neighbourhood('Bedford Park-Nortown', 'IncSpring', 11).
+neighbourhood('Bedford Park-Nortown', 'IncSummer', 11).
+neighbourhood('Bedford Park-Nortown', 'IncAutumn', 8).
+neighbourhood('Bedford Park-Nortown', 'IncWinter', 15).
+neighbourhood('Clairlea-Birchmount', 'Cluster', 5).
+neighbourhood('Clairlea-Birchmount', 'Abitants', 26984).
+neighbourhood('Clairlea-Birchmount', 'IncSpring', 18).
+neighbourhood('Clairlea-Birchmount', 'IncSummer', 21).
+neighbourhood('Clairlea-Birchmount', 'IncAutumn', 14).
+neighbourhood('Clairlea-Birchmount', 'IncWinter', 9).
+neighbourhood('Don Valley Village', 'Cluster', 5).
+neighbourhood('Don Valley Village', 'Abitants', 27051).
+neighbourhood('Don Valley Village', 'IncSpring', 20).
+neighbourhood('Don Valley Village', 'IncSummer', 14).
+neighbourhood('Don Valley Village', 'IncAutumn', 11).
+neighbourhood('Don Valley Village', 'IncWinter', 18).
+neighbourhood('East End-Danforth', 'Cluster', 5).
+neighbourhood('East End-Danforth', 'Abitants', 21381).
+neighbourhood('East End-Danforth', 'IncSpring', 18).
+neighbourhood('East End-Danforth', 'IncSummer', 21).
+neighbourhood('East End-Danforth', 'IncAutumn', 8).
+neighbourhood('East End-Danforth', 'IncWinter', 19).
+neighbourhood('High Park-Swansea', 'Cluster', 5).
+neighbourhood('High Park-Swansea', 'Abitants', 23925).
+neighbourhood('High Park-Swansea', 'IncSpring', 13).
+neighbourhood('High Park-Swansea', 'IncSummer', 19).
+neighbourhood('High Park-Swansea', 'IncAutumn', 13).
+neighbourhood('High Park-Swansea', 'IncWinter', 15).
+neighbourhood('Little Portugal', 'Cluster', 6).
+neighbourhood('Little Portugal', 'Abitants', 15559).
+neighbourhood('Little Portugal', 'IncSpring', 41).
+neighbourhood('Little Portugal', 'IncSummer', 32).
+neighbourhood('Little Portugal', 'IncAutumn', 29).
+neighbourhood('Little Portugal', 'IncWinter', 29).
+neighbourhood('Mount Dennis', 'Cluster', 6).
+neighbourhood('Mount Dennis', 'Abitants', 13593).
+neighbourhood('Mount Dennis', 'IncSpring', 32).
+neighbourhood('Mount Dennis', 'IncSummer', 32).
+neighbourhood('Mount Dennis', 'IncAutumn', 32).
+neighbourhood('Mount Dennis', 'IncWinter', 34).
+neighbourhood('Niagara', 'Cluster', 6).
+neighbourhood('Niagara', 'Abitants', 3118).
+neighbourhood('Niagara', 'IncSpring', 28).
+neighbourhood('Niagara', 'IncSummer', 41).
+neighbourhood('Niagara', 'IncAutumn', 32).
+neighbourhood('Niagara', 'IncWinter', 34).
+neighbourhood('Regent Park', 'Cluster', 6).
+neighbourhood('Regent Park', 'Abitants', 10803).
+neighbourhood('Regent Park', 'IncSpring', 35).
+neighbourhood('Regent Park', 'IncSummer', 27).
+neighbourhood('Regent Park', 'IncAutumn', 33).
+neighbourhood('Regent Park', 'IncWinter', 35).
+neighbourhood('Rustic', 'Cluster', 6).
+neighbourhood('Rustic', 'Abitants', 9941).
+neighbourhood('Rustic', 'IncSpring', 37).
+neighbourhood('Rustic', 'IncSummer', 34).
+neighbourhood('Rustic', 'IncAutumn', 31).
+neighbourhood('Rustic', 'IncWinter', 29).
+neighbourhood('South Parkdale', 'Cluster', 6).
+neighbourhood('South Parkdale', 'Abitants', 21849).
+neighbourhood('South Parkdale', 'IncSpring', 43).
+neighbourhood('South Parkdale', 'IncSummer', 26).
+neighbourhood('South Parkdale', 'IncAutumn', 20).
+neighbourhood('South Parkdale', 'IncWinter', 44).
+neighbourhood('Taylor-Massey', 'Cluster', 6).
+neighbourhood('Taylor-Massey', 'Abitants', 15683).
+neighbourhood('Taylor-Massey', 'IncSpring', 35).
+neighbourhood('Taylor-Massey', 'IncSummer', 26).
+neighbourhood('Taylor-Massey', 'IncAutumn', 27).
+neighbourhood('Taylor-Massey', 'IncWinter', 29).
+neighbourhood('Trinity-Bellwoods', 'Cluster', 6).
+neighbourhood('Trinity-Bellwoods', 'Abitants', 16556).
+neighbourhood('Trinity-Bellwoods', 'IncSpring', 35).
+neighbourhood('Trinity-Bellwoods', 'IncSummer', 23).
+neighbourhood('Trinity-Bellwoods', 'IncAutumn', 32).
+neighbourhood('Trinity-Bellwoods', 'IncWinter', 20).
+neighbourhood('Weston-Pellam Park', 'Cluster', 6).
+neighbourhood('Weston-Pellam Park', 'Abitants', 11098).
+neighbourhood('Weston-Pellam Park', 'IncSpring', 32).
+neighbourhood('Weston-Pellam Park', 'IncSummer', 25).
+neighbourhood('Weston-Pellam Park', 'IncAutumn', 24).
+neighbourhood('Weston-Pellam Park', 'IncWinter', 27).
+neighbourhood('Black Creek', 'Cluster', 6).
+neighbourhood('Black Creek', 'Abitants', 21737).
+neighbourhood('Black Creek', 'IncSpring', 42).
+neighbourhood('Black Creek', 'IncSummer', 45).
+neighbourhood('Black Creek', 'IncAutumn', 25).
+neighbourhood('Black Creek', 'IncWinter', 34).
+neighbourhood('Dufferin Grove', 'Cluster', 6).
+neighbourhood('Dufferin Grove', 'Abitants', 11785).
+neighbourhood('Dufferin Grove', 'IncSpring', 30).
+neighbourhood('Dufferin Grove', 'IncSummer', 30).
+neighbourhood('Dufferin Grove', 'IncAutumn', 20).
+neighbourhood('Dufferin Grove', 'IncWinter', 28).
+neighbourhood('High Park North', 'Cluster', 6).
+neighbourhood('High Park North', 'Abitants', 22162).
+neighbourhood('High Park North', 'IncSpring', 31).
+neighbourhood('High Park North', 'IncSummer', 29).
+neighbourhood('High Park North', 'IncAutumn', 20).
+neighbourhood('High Park North', 'IncWinter', 31).
+neighbourhood('Humber Summit', 'Cluster', 6).
+neighbourhood('Humber Summit', 'Abitants', 12416).
+neighbourhood('Humber Summit', 'IncSpring', 28).
+neighbourhood('Humber Summit', 'IncSummer', 33).
+neighbourhood('Humber Summit', 'IncAutumn', 25).
+neighbourhood('Humber Summit', 'IncWinter', 28).
+neighbourhood('Mimico (includes Humber Bay Shores)', 'Cluster', 7).
+neighbourhood('Mimico (includes Humber Bay Shores)', 'Abitants', 33964).
+neighbourhood('Mimico (includes Humber Bay Shores)', 'IncSpring', 25).
+neighbourhood('Mimico (includes Humber Bay Shores)', 'IncSummer', 18).
+neighbourhood('Mimico (includes Humber Bay Shores)', 'IncAutumn', 24).
+neighbourhood('Mimico (includes Humber Bay Shores)', 'IncWinter', 22).
+neighbourhood('Mount Pleasant West', 'Cluster', 7).
+neighbourhood('Mount Pleasant West', 'Abitants', 29658).
+neighbourhood('Mount Pleasant West', 'IncSpring', 28).
+neighbourhood('Mount Pleasant West', 'IncSummer', 19).
+neighbourhood('Mount Pleasant West', 'IncAutumn', 14).
+neighbourhood('Mount Pleasant West', 'IncWinter', 23).
+neighbourhood('Parkwoods-Donalda', 'Cluster', 7).
+neighbourhood('Parkwoods-Donalda', 'Abitants', 34805).
+neighbourhood('Parkwoods-Donalda', 'IncSpring', 18).
+neighbourhood('Parkwoods-Donalda', 'IncSummer', 32).
+neighbourhood('Parkwoods-Donalda', 'IncAutumn', 10).
+neighbourhood('Parkwoods-Donalda', 'IncWinter', 15).
+neighbourhood('Tam O-Shanter-Sullivan', 'Cluster', 7).
+neighbourhood('Tam O-Shanter-Sullivan', 'Abitants', 27446).
+neighbourhood('Tam O-Shanter-Sullivan', 'IncSpring', 29).
+neighbourhood('Tam O-Shanter-Sullivan', 'IncSummer', 24).
+neighbourhood('Tam O-Shanter-Sullivan', 'IncAutumn', 19).
+neighbourhood('Tam O-Shanter-Sullivan', 'IncWinter', 26).
+neighbourhood('Waterfront Communities-The Island', 'Cluster', 7).
+neighbourhood('Waterfront Communities-The Island', 'Abitants', 65913).
+neighbourhood('Waterfront Communities-The Island', 'IncSpring', 19).
+neighbourhood('Waterfront Communities-The Island', 'IncSummer', 18).
+neighbourhood('Waterfront Communities-The Island', 'IncAutumn', 18).
+neighbourhood('Waterfront Communities-The Island', 'IncWinter', 25).
+neighbourhood('West Hill', 'Cluster', 7).
+neighbourhood('West Hill', 'Abitants', 27392).
+neighbourhood('West Hill', 'IncSpring', 20).
+neighbourhood('West Hill', 'IncSummer', 12).
+neighbourhood('West Hill', 'IncAutumn', 24).
+neighbourhood('West Hill', 'IncWinter', 32).
+neighbourhood('West Humber-Clairville', 'Cluster', 7).
+neighbourhood('West Humber-Clairville', 'Abitants', 33312).
+neighbourhood('West Humber-Clairville', 'IncSpring', 31).
+neighbourhood('West Humber-Clairville', 'IncSummer', 26).
+neighbourhood('West Humber-Clairville', 'IncAutumn', 20).
+neighbourhood('West Humber-Clairville', 'IncWinter', 28).
+neighbourhood('Dovercourt-Wallace Emerson-Junction', 'Cluster', 7).
+neighbourhood('Dovercourt-Wallace Emerson-Junction', 'Abitants', 36625).
+neighbourhood('Dovercourt-Wallace Emerson-Junction', 'IncSpring', 38).
+neighbourhood('Dovercourt-Wallace Emerson-Junction', 'IncSummer', 26).
+neighbourhood('Dovercourt-Wallace Emerson-Junction', 'IncAutumn', 21).
+neighbourhood('Dovercourt-Wallace Emerson-Junction', 'IncWinter', 38).
+neighbourhood('Downsview-Roding-CFB', 'Cluster', 7).
+neighbourhood('Downsview-Roding-CFB', 'Abitants', 35052).
+neighbourhood('Downsview-Roding-CFB', 'IncSpring', 14).
+neighbourhood('Downsview-Roding-CFB', 'IncSummer', 26).
+neighbourhood('Downsview-Roding-CFB', 'IncAutumn', 25).
+neighbourhood('Downsview-Roding-CFB', 'IncWinter', 22).
+neighbourhood('Islington-City Centre West', 'Cluster', 7).
+neighbourhood('Islington-City Centre West', 'Abitants', 43965).
+neighbourhood('Islington-City Centre West', 'IncSpring', 28).
+neighbourhood('Islington-City Centre West', 'IncSummer', 25).
+neighbourhood('Islington-City Centre West', 'IncAutumn', 20).
+neighbourhood('Islington-City Centre West', 'IncWinter', 25).
+neighbourhood('L-Amoreaux', 'Cluster', 7).
+neighbourhood('L-Amoreaux', 'Abitants', 43993).
+neighbourhood('L-Amoreaux', 'IncSpring', 18).
+neighbourhood('L-Amoreaux', 'IncSummer', 21).
+neighbourhood('L-Amoreaux', 'IncAutumn', 9).
+neighbourhood('L-Amoreaux', 'IncWinter', 16).
+% Cluster 0
+rischio_cluster('0', 'Spring', 'Basso').
+rischio_cluster('0', 'Summer', 'Basso').
+rischio_cluster('0', 'Autumn', 'Basso').
+rischio_cluster('0', 'Winter', 'Basso').
+% Cluster 1
+rischio_cluster('1', 'Spring', 'Medio').
+rischio_cluster('1', 'Summer', 'Medio').
+rischio_cluster('1', 'Autumn', 'Medio').
+rischio_cluster('1', 'Winter', 'Medio').
+% Cluster 2
+rischio_cluster(2, 'Spring', 'Alto').
+rischio_cluster(2, 'Summer', 'Alto').
+rischio_cluster(2, 'Autumn', 'Alto').
+rischio_cluster(2, 'Winter', 'Alto').
+% Cluster 3
+rischio_cluster(3, 'Spring', 'Molto Alto').
+rischio_cluster(3, 'Summer', 'Molto Alto').
+rischio_cluster(3, 'Autumn', 'Molto Alto').
+rischio_cluster(3, 'Winter', 'Molto Alto').
+% Cluster 4
+rischio_cluster(4, 'Spring', 'Molto Basso').
+rischio_cluster(4, 'Summer', 'Molto Basso').
+rischio_cluster(4, 'Autumn', 'Molto Basso').
+rischio_cluster(4, 'Winter', 'Molto Basso').
+% Cluster 5
+rischio_cluster(5, 'Spring', 'Basso').
+rischio_cluster(5, 'Summer', 'Basso').
+rischio_cluster(5, 'Autumn', 'Basso').
+rischio_cluster(5, 'Winter', 'Basso').
+% Cluster 6
+rischio_cluster(6, 'Spring', 'Alto').
+rischio_cluster(6, 'Summer', 'Alto').
+rischio_cluster(6, 'Autumn', 'Alto').
+rischio_cluster(6, 'Winter', 'Alto').
+% Cluster 7
+rischio_cluster(7, 'Spring', 'Alto').
+rischio_cluster(7, 'Summer', 'Alto').
+rischio_cluster(7, 'Autumn', 'Alto').
+rischio_cluster(7, 'Winter', 'Alto').
